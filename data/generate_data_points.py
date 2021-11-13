@@ -32,9 +32,9 @@ for i in range(NUM_STUDENTS):
             last_score = data_point["lab" + str(i)]
             score = min(100, random.randint(last_score-20, last_score+20))
         if (score > 75):
-            num_commits = random.randint(2,6)
+            num_commits = random.randint(2,7)
         else:
-            num_commits = random.randint(1,5)
+            num_commits = random.randint(2,7)
         data_point[lab_key] = score
         data_point[lab_key + "_commits"] = num_commits
 
@@ -51,20 +51,31 @@ for i in range(NUM_STUDENTS):
         
         p = random.uniform(0,1)
         if (score > 75):
-            num_commits = random.randint(4,10)
+            num_commits = random.randint(4,11)
             if (p > 0.75):
                 extra_credit = "Yes"
             else:
                 extra_credit = "No"
         else:
-            num_commits = random.randint(1,7)
+            num_commits = random.randint(2,9)
             if (p > 0.35):
                 extra_credit = "Yes"
             else:
                 extra_credit = "No"
+
+        if (score > 90):
+            time_before_deadline = random.randint(5,13)
+        elif (score > 75):
+            time_before_deadline = random.randint(4,12)
+        elif (score > 60):
+            time_before_deadline = random.randint(2,11)
+        else:
+            time_before_deadline = random.randint(1,9)
+
         data_point[mp_key] = score
         data_point[mp_key + "_commits"] = num_commits
         data_point[mp_key + "_extra_credit"] = extra_credit
+        data_point[mp_key + "first_commit_time"] = time_before_deadline
 
 
     # Generate Exam Scores
