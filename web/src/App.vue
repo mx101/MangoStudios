@@ -1,5 +1,14 @@
 <template>
   <div id="app">
+    <button class="btn btn-primary"
+            data-bs-target="#collapseTarget"
+            data-bs-toggle="collapse">
+            Bootstrap collapse
+        </button>
+
+        <div class="collapse py-2" id="collapseTarget">
+            This is the toggle-able content!
+        </div>
     <div>
       <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
         <b-dropdown-item><b-link to="/">Home</b-link></b-dropdown-item>
@@ -11,7 +20,7 @@
       </b-dropdown>
     </div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">NavBar</b-navbar-brand>
+    <b-navbar-brand href="#/About">NavBar</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
