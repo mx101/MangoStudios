@@ -1,27 +1,29 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import About from '@/views/About'
 import Playground from '@/views/Playground'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'HelloWorld',
+    component: HelloWorld
+  },
+  {
+    path: '/Overview',
+    name: 'Overview',
+    component: About
+  },
+  {
+    path: '/Playground',
+    name: 'Playground',
+    component: Playground
+  }
+]
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/About',
-      name: 'About',
-      component: About
-    },
-    {
-      path: '/Playground',
-      name: 'Playground',
-      component: Playground
-    }
-  ]
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
 })
+
+export default router

@@ -1,80 +1,147 @@
 <template>
   <div id="app">
-    <button class="btn btn-primary"
-            data-bs-target="#collapseTarget"
-            data-bs-toggle="collapse">
-            Bootstrap collapse
-        </button>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
 
-        <div class="collapse py-2" id="collapseTarget">
-            This is the toggle-able content!
+            <!-- Brand Name -->
+            <a class="navbar-brand" href="#/">academia💡</a>
+
+            <!-- Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Features to be compressed on smaller screens -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Navigation Links -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mx-3 active" aria-current="page" href="#/Overview">OVERVIEW</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="#/Playground">PLAYGROUND</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            STATS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#/Labs">LABS</a></li>
+                            <li><a class="dropdown-item" href="#/MPs">MPS</a></li>
+                            <li><a class="dropdown-item" href="#/Exams">EXAMS</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Needed??</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    <div>
-      <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
-        <b-dropdown-item><b-link to="/">Home</b-link></b-dropdown-item>
-        <b-dropdown-item>Second Action</b-dropdown-item>
-        <b-dropdown-item>Third Action</b-dropdown-item>
-        <b-dropdown-divider></b-dropdown-divider>
-        <b-dropdown-item active>Active action</b-dropdown-item>
-        <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-      </b-dropdown>
-    </div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#/About">NavBar</b-navbar-brand>
-
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item href="#">Link</b-nav-item>
-        <b-nav-item href="#" disabled>Disabled</b-nav-item>
-      </b-navbar-nav>
-
-      <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto">
-        <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form>
-
-        <b-nav-item-dropdown text="Lang" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
-
-        <b-nav-item-dropdown right>
-          <!-- Using 'button-content' slot -->
-          <template #button-content>
-            <em>User</em>
-          </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-        </b-nav-item-dropdown>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
-    <router-link v-bind:to="'/'">Home</router-link>
-    <router-link v-bind:to="'/About'">About</router-link>
-    <router-link v-bind:to="'/Playground'">Playground</router-link>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" v-bind:class=" { 'navbarOpen': show }">
+        <a class="navbar-brand" href="#/">CS 225</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" @click.stop="toggleNavbar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" v-bind:class="{ 'show': show }">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#/">Home</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#/Overview">Overview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#/Playground">Playground</a>
+            </li>
+            <li >
+              <div class="dropdown">
+                <a
+                  class="btn dropdown-toggle"
+                  @click="toggleDrop"
+                  id="navbarDropdown"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Grade Visualizations
+                </a>
+                <div v-if="dropActive">
+                    <a class="dropdown-item" href="#/MPs">MPs</a>
+                    <a class="dropdown-item" href="#/Labs">Labs</a>
+                    <a class="dropdown-item" href="#/Exams">Exams</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+       </div>
+    </nav> -->
     <router-view/>
   </div>
 </template>
 
 <script>
+// import DropdownPage from './components/Dropdown.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      show: true,
+      dropActive: false
+    }
+  },
+  methods: {
+    toggleNavbar () {
+      this.show = !this.show
+    },
+    toggleDrop () {
+      this.dropActive = !this.dropActive
+    }
+  },
+  components: {
+    // DropdownPage
+  }
 }
 </script>
 
 <style>
+#navbar {
+	/* font-family: "Josefin Sans", sans-serif; */
+	font-family: "Spartan", sans-serif;
+	font-weight: 500;
+	letter-spacing: 1px;
+
+	background-color: #002855;
+}
+
+#intro-section {
+	height: 100vh;
+	width: 100vw;
+	padding: 2.5% 7.5% 5%;
+
+	font-family: "Montserrat", sans-serif;
+}
+
+#intro-section h1 {
+	font-size: calc(4em + 1vw);
+	font-weight: 700;
+}
+
+#intro-section h2 {
+	font-size: calc(1em + 1vw);
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
