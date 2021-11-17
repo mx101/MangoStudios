@@ -1,7 +1,7 @@
 <template>
   <div id="exams">
   <h1>
-      Exams
+      Exams, until data input is fixed, can only switch between given form selects for Exam 1
   </h1>
   <div style="width:20%; float:left; height:100%">
       <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
@@ -13,6 +13,8 @@
   </select>
   <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName">
     <option disabled value="">Select Major</option>
+    <option>CS</option>
+    <option>ECE</option>
     <option>English</option>
     <option>Math</option>
     <option>Physics</option>
