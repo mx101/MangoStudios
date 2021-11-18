@@ -9,5 +9,6 @@ import 'mdbvue'
 import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+// import {tree1} from "@benjaminadk/simple-binary-search-tree"
 
 createApp(App).use(router).mount('#app')

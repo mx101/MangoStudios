@@ -1,44 +1,47 @@
 <template>
   <div id="exams">
   <h1>
-      Exams, until data input is fixed, can only switch between given form selects for Exam 1
+      <br>
+      Exams
   </h1>
-  <div style="width:20%; float:left; height:100%">
-      <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
-    <option disabled value="">THIS DOES NOTHING</option>
-    <option>Exam 1</option>
-    <option>Exam 2</option>
-    <option>Exam 3</option>
-    <option>Final</option>
-  </select>
-  <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName">
-    <option disabled value="">Select Major</option>
-    <option>CS</option>
-    <option>ECE</option>
-    <option>English</option>
-    <option>Math</option>
-    <option>Physics</option>
-  </select>
-  <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName">
-    <option disabled value="">Select Year</option>
-    <option>Freshman</option>
-    <option>Sophomore</option>
-    <option>Junior</option>
-    <option>Senior</option>
-    <option>Graduate</option>
-  </select>
+  <div class="row">
+    <div class="col">
+        <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
+            <option disabled value="">THIS DOES NOTHING</option>
+            <option>Exam 1</option>
+            <option>Exam 2</option>
+            <option>Exam 3</option>
+            <option>Final</option>
+        </select>
+    </div>
+    <div class="col">
+        <img :src="image" />
+    </div>
+    <div class="col" v-if="this.image != null">
+        
+    <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName">
+        <option disabled value="">Select Major</option>
+        <option>CS</option>
+        <option>ECE</option>
+        <option>English</option>
+        <option>Math</option>
+        <option>Physics</option>
+    </select>
+    <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName">
+        <option disabled value="">Select Year</option>
+        <option>Freshman</option>
+        <option>Sophomore</option>
+        <option>Junior</option>
+        <option>Senior</option>
+        <option>Graduate</option>
+    </select>
+    </div>
   </div>
-  <div style="width:80%; float:right">
-      <img :src="image" />
-  </div>
-  
-  <br>
-  
   </div>
 </template>
 
 <script>
-import image from "../assets/logo.png"
+// import image from "../assets/white.png"
 
 function getImgUrl(changing_to) {
     var images = require.context('../assets/exams/', false, /\.png$/)
@@ -49,7 +52,7 @@ export default {
   name: 'Exams',
   data: function () {
       return {
-          image: image,
+          image: null,
           major: "",
           year: "",
           exam: ""
@@ -108,6 +111,16 @@ export default {
 </script>
 <!-- styling for the component -->
 <style>
+    .row {
+        display: table;
+        
+    }
+
+    .col {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
     #about {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
