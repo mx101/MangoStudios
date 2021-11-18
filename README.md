@@ -1,1 +1,1 @@
-# MangoStudios
+# Mango Studios
