@@ -6,20 +6,43 @@
   </h1>
   <div class="row">
     <div class="col">
-        <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
+        <div class = "row">
+            <button v-on:click="selectExam('exam1')" type="select">Exam 1</button>
+        </div>
+        <div class = "row">
+            <button  v-on:click="selectExam('exam2')" type="select">Exam 2</button>
+        </div>
+        <div class = "row">
+            <button  v-on:click="selectExam('exam3')" type="select">Exam 3</button>
+        </div>
+         <div class = "row">
+            <button  v-on:click="selectExam('final_exam')" type="select">Final Exam</button>
+        </div>
+        <!-- <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
             <option disabled value="">THIS DOES NOTHING</option>
             <option>Exam 1</option>
             <option>Exam 2</option>
             <option>Exam 3</option>
             <option>Final</option>
-        </select>
+        </select> -->
     </div>
     <div class="col">
         <img :src="image" />
     </div>
     <div class="col" v-if="this.image != null">
+        <h2>
+            <br>
+            Average Grade
+        </h2>
+        <h2>
+            <br>
+            <!-- insert variable that changes with buttons -->
+            {{this.avg}}
+        </h2>
+    </div>
+    <div class="col" v-if="this.image != null">
         
-    <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName">
+    <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName('')">
         <option disabled value="">Select Major</option>
         <option>CS</option>
         <option>ECE</option>
@@ -27,7 +50,7 @@
         <option>Math</option>
         <option>Physics</option>
     </select>
-    <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName">
+    <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName('')">
         <option disabled value="">Select Year</option>
         <option>Freshman</option>
         <option>Sophomore</option>
@@ -55,7 +78,8 @@ export default {
           image: null,
           major: "",
           year: "",
-          exam: ""
+          exam: "",
+          avg: "",
       }
   },
   methods: {
@@ -78,8 +102,25 @@ export default {
         var images = require.context('../assets/exams/', false, /\.png$/)
         return images('./' + graph_to_get + ".png")
     },
-    buildFileName () {
-        var filename = "exam1"
+    selectExam (selectExam) {
+        this.exam = selectExam
+        if(selectExam == 'exam1') {
+            this.avg = 'A-'
+        }
+        else if(selectExam == 'exam2') {
+            this.avg = 'B+'
+        }
+        else {
+            this.avg = 'B'
+        }
+        this.buildFileName(selectExam)
+        return selectExam
+    },
+    buildFileName (selectExam) {
+        var filename = selectExam
+        if (selectExam.length == 0) {
+            filename = this.exam
+        }
         if (this.major.length != 0) {
             filename = filename + "_" + this.major
         }
@@ -105,6 +146,7 @@ export default {
         }
         console.log(filename)
         this.image = getImgUrl(filename)
+        return selectExam
     }
   }
 }
