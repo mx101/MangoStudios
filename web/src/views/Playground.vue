@@ -1,12 +1,13 @@
 <template>
   <div id="playground">
-  <h3>
+  <h1 style="padding-left:30px">
     Binary Search Tree
-  </h3>
-  <BST/>
-
-  <br><br><br>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/_CM7vN1D6dw?start=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </h1>
+  <div style="text-align:center">
+    <BST/>
+    <br><br><br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CM7vN1D6dw?start=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
   </div>
 </template>
 
@@ -26,7 +27,7 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    /* text-align: center; */
     color: #2c3e50;
     margin-top: 60px;
     }

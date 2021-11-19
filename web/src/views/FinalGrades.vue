@@ -1,6 +1,6 @@
 <template>
   <div id="exams" >
-  <h1>
+  <h1 style="padding-left:30px">
       <br>
       Final Grades
   </h1>
@@ -89,7 +89,7 @@ export default {
           major: "",
           year: "",
           exam: "final_grade",
-          avg: "A+",
+          avg: "B",
           behavior: "",
       }
   },

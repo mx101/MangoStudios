@@ -1,25 +1,25 @@
 <template>
   <div id="exams">
-  <h1>
+  <h1 style="padding-left:30px">
       <br>
       Exams
   </h1>
   <div class="row" style="text-align: center; width:100%">
     <div class="col btn-group-toggle" data-toggle="buttons" style="text-align: center; width: auto">
         <input type="radio" id="exam1" value="exam1" v-model="exam" v-on:click="selectExam('exam1')">
-        <label for="one" v-on:click="selectExam('exam1')"> Exam 1</label>
+        <h4><label for="one" v-on:click="selectExam('exam1')">#Exam 1</label></h4>
         <br>
         <br>
         <input type="radio" id="exam2" value="exam2" v-model="exam" v-on:click="selectExam('exam2')">
-        <label for="exam2" v-on:click="selectExam('exam2')"> Exam 2</label>
+        <h4><label for="exam2" v-on:click="selectExam('exam2')">#Exam 2</label></h4>
         <br>
         <br>
         <input type="radio" id="exam3" value="exam3" v-model="exam" v-on:click="selectExam('exam3')">
-        <label for="exam3" v-on:click="selectExam('exam3')">Exam 3</label>
+        <h4><label for="exam3" v-on:click="selectExam('exam3')">#Exam 3</label></h4>
         <br>
         <br>
         <input type="radio" id="final_exam" value="final_exam" v-model="exam" v-on:click="selectExam('final_exam')">
-        <label for="final_exam" v-on:click="selectExam('final_exam')">Final Exam</label>
+        <h4><label for="final_exam" v-on:click="selectExam('final_exam')">#Final Exam</label></h4>
         <br>
         <br>
         <!-- <div class = "row">
