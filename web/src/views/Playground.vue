@@ -1,12 +1,19 @@
 <template>
   <div id="playground">
   Playground here
+  <br>
+  <BST/>
   </div>
 </template>
 
 <script>
+import BST from "../components/BST.vue"
+
 export default {
-  name: 'Playground'
+  name: 'Playground',
+  components: {
+    BST
+  }
 }
 </script>
 <!-- styling for the component -->
