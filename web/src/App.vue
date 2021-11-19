@@ -3,25 +3,30 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
 
-            <!-- Brand Name -->
             <a class="navbar-brand" href="#/">CS 225++</a>
 
-            <!-- Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Features to be compressed on smaller screens -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <!-- Navigation Links -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-3 active" aria-current="page" href="#/Overview">Overview</a>
+                        <a class="nav-link mx-3 " aria-current="page" href="#/Overview">Overview</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="#/Playground">MP Sandbox</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            MP Resources
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#/Playground">AVL Trees</a></li>
+                          <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">Binary Search Tree</a></li>
+                          <li><a class="dropdown-item" href="#/Playground">Breadth-First Search</a></li>
+                          <li><a class="dropdown-item" href="#/Playground">Depth-First Search</a></li>
+                            
+                        </ul>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -32,6 +37,8 @@
                             <li><a class="dropdown-item" href="#/Labs">Labs</a></li>
                             <li><a class="dropdown-item" href="#/MPs">MPs</a></li>
                             <li><a class="dropdown-item" href="#/Exams">Exams</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#/FinalGrades">Final Grades</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -43,8 +50,6 @@
 </template>
 
 <script>
-// import DropdownPage from './components/Dropdown.vue'
-
 
 export default {
   name: 'App',
@@ -68,7 +73,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;600;700;800&display=swap');
@@ -103,7 +108,20 @@ export default {
   font-family: "Spartan", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+.router-link-exact-active {
+        border-bottom: 1px solid #123456;
+    }
+
+.router-link-active {
+    border: 1px solid #fff;
+    color: #fff !important;
+  }
 </style>
