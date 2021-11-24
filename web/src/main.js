@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import 'mdbvue'
 import 'd3'
+import 'chart.js'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'

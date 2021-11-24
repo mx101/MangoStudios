@@ -1,37 +1,45 @@
 <template>
   <div id="exams">
-  <h1>
+  <h1 style="padding-left:30px">
       <br>
       Exams
   </h1>
-  <div class="row">
-    <div class="col">
-        <div class = "row">
-            <button v-on:click="selectExam('exam1')" type="select">Exam 1</button>
+  <div class="row" style="text-align: center; width:100%">
+    <div class="col btn-group-toggle" data-toggle="buttons" style="text-align: center; width: auto">
+        <input type="radio" id="exam1" value="exam1" v-model="exam" v-on:click="selectExam('exam1')">
+        <h4><label for="one" v-on:click="selectExam('exam1')">#Exam 1</label></h4>
+        <br>
+        <br>
+        <input type="radio" id="exam2" value="exam2" v-model="exam" v-on:click="selectExam('exam2')">
+        <h4><label for="exam2" v-on:click="selectExam('exam2')">#Exam 2</label></h4>
+        <br>
+        <br>
+        <input type="radio" id="exam3" value="exam3" v-model="exam" v-on:click="selectExam('exam3')">
+        <h4><label for="exam3" v-on:click="selectExam('exam3')">#Exam 3</label></h4>
+        <br>
+        <br>
+        <input type="radio" id="final_exam" value="final_exam" v-model="exam" v-on:click="selectExam('final_exam')">
+        <h4><label for="final_exam" v-on:click="selectExam('final_exam')">#Final Exam</label></h4>
+        <br>
+        <br>
+        <!-- <div class = "row">
+            <label class="btn btn-primary" v-on:click="selectExam('exam1')" type="radio">Exam 1</label>
         </div>
         <div class = "row">
-            <button  v-on:click="selectExam('exam2')" type="select">Exam 2</button>
+            <label  class="btn btn-primary" v-on:click="selectExam('exam2')" type="radio">Exam 2</label>
         </div>
         <div class = "row">
-            <button  v-on:click="selectExam('exam3')" type="select">Exam 3</button>
+            <label  class="btn btn-primary" v-on:click="selectExam('exam3')" type="radio">Exam 3</label>
         </div>
          <div class = "row">
-            <button  v-on:click="selectExam('final_exam')" type="select">Final Exam</button>
-        </div>
-        <!-- <select class="form-select" style="width:auto;" v-model="exam" @change="buildFileName">
-            <option disabled value="">THIS DOES NOTHING</option>
-            <option>Exam 1</option>
-            <option>Exam 2</option>
-            <option>Exam 3</option>
-            <option>Final</option>
-        </select> -->
+            <label  class="btn btn-primary" v-on:click="selectExam('final_exam')" type="radio">Final Exam</label>
+        </div> -->
     </div>
-    <div class="col">
+    <div class="col" style="text-align: center; width:auto">
         <img :src="image" />
     </div>
-    <div class="col" v-if="this.image != null">
+    <div class="col" style="text-align: center; width:auto" v-if="this.image != null">
         <h2>
-            <br>
             Average Grade
         </h2>
         <h2>
@@ -40,8 +48,8 @@
             {{this.avg}}
         </h2>
     </div>
-    <div class="col" v-if="this.image != null">
-        
+    <div class="col" style="text-align: center; width:auto" v-if="this.image != null">
+    <div class="row">
     <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName('')">
         <option disabled value="">Select Major</option>
         <option>CS</option>
@@ -50,6 +58,16 @@
         <option>Math</option>
         <option>Physics</option>
     </select>
+    <a v-on:click="clearField('major')" 
+        v-if="this.major.length != 0" 
+        type="button" 
+        class="btn btn-primary btn-sm" 
+        aria-label="Close">Clear
+    </a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
     <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName('')">
         <option disabled value="">Select Year</option>
         <option>Freshman</option>
@@ -58,6 +76,28 @@
         <option>Senior</option>
         <option>Graduate</option>
     </select>
+    <a v-on:click="clearField('year')" 
+        v-if="this.year.length != 0" 
+        type="button" 
+        class="btn btn-primary btn-sm" 
+        aria-label="Close">Clear
+    </a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+    <select class="form-select" style="width:auto;" v-model="behavior" @change="buildFileName('')">
+        <option disabled value="">Select Behaviors</option>
+        <option>POTDs Completed</option>
+        <option>Autograders used</option>
+    </select>
+    <a v-on:click="clearField('behavior')" 
+        v-if="this.behavior.length != 0" 
+        type="button" 
+        class="btn btn-primary btn-sm" 
+        aria-label="Close">Clear
+    </a>
+    </div>
     </div>
   </div>
   </div>
@@ -80,6 +120,7 @@ export default {
           year: "",
           exam: "",
           avg: "",
+          behavior: "",
       }
   },
   methods: {
@@ -121,6 +162,11 @@ export default {
         if (selectExam.length == 0) {
             filename = this.exam
         }
+        if (this.behavior.length != 0) {
+            filename = filename + "_potds"
+        } else {
+            // implement clear POTDS behavior case
+        }
         if (this.major.length != 0) {
             filename = filename + "_" + this.major
         }
@@ -144,15 +190,26 @@ export default {
             }
             
         }
+        
         console.log(filename)
         this.image = getImgUrl(filename)
         return selectExam
-    }
+    }, clearField(field) {
+        if (field == "major") {
+            this.major = ""
+        } else if (field == "year") {
+            this.year = ""
+        } else if (field == "behavior") {
+            this.behavior = ""
+        }
+
+        this.buildFileName(this.exam)
+    },
   }
 }
 </script>
 <!-- styling for the component -->
-<style>
+<style scoped>
     .row {
         display: table;
         
