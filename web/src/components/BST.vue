@@ -1,8 +1,11 @@
 <template>
   <div>
-    <input name="input" type="number" value="50" step="1" min="0" max="99" autocomplete="off" style="width: auto; font-size: 1em;"> 
-    <button name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path"/>
-    <div id="bst" />
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="search_value" style="width: auto; font-size: 1em; text-align: center;"> 
+      <button class="btn btn-primary" name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path">Watch Search</button>
+    </div>
+    <br>
+    <div id="bst" style="display: flex; justify-content: center; align-items: center;"/>
   </div>
 </template>
 
@@ -129,14 +132,15 @@ class Node {
   }
 }
 
-function special_length (d) {
-  return Math.sqrt(Math.pow(d.parent.x - d.x, 2) + Math.pow(d.parent.y - d.y, 2))
-}
+// function special_length (d) {
+//   return Math.sqrt(Math.pow(d.parent.x - d.x, 2) + Math.pow(d.parent.y - d.y, 2))
+// }
 
 export default {
   name: 'BST',
   data: () =>({
-    tree_:null
+    tree_:null,
+    search_value: 50
   }),
   components: {
 
@@ -173,15 +177,10 @@ export default {
         .select('g')
         .attr('transform', `translate(${margin},${margin})`)
 
-      var searchFor1 = 24
+      var searchFor1 = this.search_value
       
       if(searchFor1) {
         var path = this.tree_.getSearchPath(searchFor1);
-        // console.log("path", path)
-        // console.log("nodes_all", nodes)
-        // console.log("links_all", links)
-        // var recurs1 = path.length
-
         var pathNodes = nodes.filter(n => path.includes(n.data.value))
         var pathLinks = links.filter(l => path.includes(l.data.value))
 
@@ -200,42 +199,42 @@ export default {
           .attr('x2', d => d.x)
           .attr('y2', d => d.y)
           .attr('stroke', 'steelblue')
-          .attr('stroke-width', 4)
-          .attr('stroke-dasharray', d => special_length(d))
-          .attr('stroke-dashoffset', d => special_length(d))
-          .transition()
-          .duration(500)
-          .delay((d, i) => i * 500 + 1000)
-          // .attr('stroke-dashoffset', d => 0)
-
-        g
-          .selectAll('circle.path')
-          .data(pathNodes)
-          .enter()
-          .append('circle')
-          .attr('class', 'path')
-          .attr('r', radius)
-          .attr('fill', '#FFF')
-          .attr('transform', d => `translate(${d.x},${d.y})`)
-          .attr('stroke', 'steelblue')
           .attr('stroke-width', 2)
-          .attr('stroke-dasharray', 2 * Math.PI * radius)
-          .attr('stroke-dashoffset', 2 * Math.PI * radius)
+          // length is likely the reason lines are drawing immediately
+          .attr('stroke-dasharray', d => length(d))
+          .attr('stroke-dashoffset', d => length(d))
           .transition()
           .duration(500)
-          .delay((d, i) => i * 500)
-          .attr('stroke-dashoffset', 0)
-          
-        g.selectAll('text.path')
-          .data(pathNodes)
-          .enter()
-          .append('text')
-          .attr('class', 'path')
-          .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'middle')
-          .attr('transform', d => `translate(${d.x},${d.y + 1})`)
-          .style('font-size', '14px')
-          .text(d => d.data.value)
+          // .delay((d, i) => i * 500 + 1000)
+
+          g
+            .selectAll('circle.path')
+            .data(pathNodes)
+            .enter()
+            .append('circle')
+            .attr('class', 'path')
+            .attr('r', radius)
+            .attr('fill', '#FFF')
+            .attr('transform', d => `translate(${d.x},${d.y})`)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', 2 * Math.PI * radius)
+            .attr('stroke-dashoffset', 2 * Math.PI * radius)
+            .transition()
+            .duration(500)
+            .delay((d, i) => i * 500)
+            .attr('stroke-dashoffset', 0)
+            
+          g.selectAll('text.path')
+            .data(pathNodes)
+            .enter()
+            .append('text')
+            .attr('class', 'path')
+            .attr('text-anchor', 'middle')
+            .attr('alignment-baseline', 'middle')
+            .attr('transform', d => `translate(${d.x},${d.y + 1})`)
+            .style('font-size', '14px')
+            .text(d => d.data.value)
         }
       }
       
