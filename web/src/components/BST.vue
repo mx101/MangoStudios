@@ -1,9 +1,7 @@
 <template>
   <div>
-    <form>
-      <input name="input" type="number" value="50" step="1" min="0" max="99" autocomplete="off" style="width: auto; font-size: 1em;"> 
-      <input name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path">
-    </form>
+    <input name="input" type="number" value="50" step="1" min="0" max="99" autocomplete="off" style="width: auto; font-size: 1em;"> 
+    <button name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path"/>
     <div id="bst" />
   </div>
 </template>
@@ -131,6 +129,9 @@ class Node {
   }
 }
 
+function special_length (d) {
+  return Math.sqrt(Math.pow(d.parent.x - d.x, 2) + Math.pow(d.parent.y - d.y, 2))
+}
 
 export default {
   name: 'BST',
@@ -145,14 +146,47 @@ export default {
   },
   methods: {
     animate_path() {
-      /*var svg = d3.select("#bst")
+      const width = 800
+      const height = 600
+      const radius = 10
+      const margin = 20
+      const tree = d3.tree().size([width, height])
+      const root = d3.hierarchy(this.tree_.root, function(d) {
+        d.children = []
+        if(d.left) {
+          d.children.push(d.left)
+        }
+        if(d.right) {
+          d.children.push(d.right)
+        }
+        return d.children
+      })
+      
+      root.x0 = width / 2
+      root.y0 = 0
+      
+      var treeData = tree(root)
+      var nodes = treeData.descendants()
+      var links = treeData.descendants().slice(1)
+      var svg = d3.select("#bst")
+      var g = svg
+        .select('g')
+        .attr('transform', `translate(${margin},${margin})`)
+
       var searchFor1 = 24
       
       if(searchFor1) {
-        var path = this._tree.getSearchPath(searchFor1);
+        var path = this.tree_.getSearchPath(searchFor1);
+        // console.log("path", path)
+        // console.log("nodes_all", nodes)
+        // console.log("links_all", links)
         // var recurs1 = path.length
-        var pathNodes = nodes.filter(n => path.includes(n.value))
-        var pathLinks = links.filter(l => path.includes(l.value))
+
+        var pathNodes = nodes.filter(n => path.includes(n.data.value))
+        var pathLinks = links.filter(l => path.includes(l.data.value))
+
+        console.log("path nodes", pathNodes)
+        console.log("path links", pathLinks)
         
         for(let j = 0; j < path.length; j++) {
           g
@@ -166,9 +200,9 @@ export default {
           .attr('x2', d => d.x)
           .attr('y2', d => d.y)
           .attr('stroke', 'steelblue')
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', d => length(d))
-          .attr('stroke-dashoffset', d => length(d))
+          .attr('stroke-width', 4)
+          .attr('stroke-dasharray', d => special_length(d))
+          .attr('stroke-dashoffset', d => special_length(d))
           .transition()
           .duration(500)
           .delay((d, i) => i * 500 + 1000)
@@ -205,7 +239,7 @@ export default {
         }
       }
       
-      return svg.node() */
+      return svg.node()
     },
     generate_bst() {
       const width = 800
@@ -213,15 +247,15 @@ export default {
       const margin = 20
       const radius = 10
       
-      const bst = new BinarySearchTree()
+      this.tree_ = new BinarySearchTree()
       const data = d3.shuffle(d3.range(0, 100))
       
       data.forEach(d => {
-        bst.insert(d)
+        this.tree_.insert(d)
       })
       
       const tree = d3.tree().size([width, height])
-      const root = d3.hierarchy(bst.root, function(d) {
+      const root = d3.hierarchy(this.tree_.root, function(d) {
         d.children = []
         if(d.left) {
           d.children.push(d.left)
@@ -238,7 +272,6 @@ export default {
       var treeData = tree(root)
       var nodes = treeData.descendants()
       var links = treeData.descendants().slice(1)
-      this.tree = bst
       
       var svg = d3
         .select("#bst")
@@ -291,66 +324,7 @@ export default {
         .attr('transform', d => `translate(${d.x},${d.y + 1})`)
         .style('font-size', '14px')
         .text(d => d.data.value)
-
-      var searchFor1 = 24
-      
-      if(searchFor1) {
-        var path = bst.getSearchPath(searchFor1);
-        // var recurs1 = path.length
-        var pathNodes = nodes.filter(n => path.includes(n.value))
-        var pathLinks = links.filter(l => path.includes(l.value))
-        
-        for(let j = 0; j < path.length; j++) {
-          g
-          .selectAll('line.path')
-          .data(pathLinks)
-          .enter()
-          .append('line')
-          .attr('class', 'path')
-          .attr('x1', d => d.parent.x)
-          .attr('y1', d => d.parent.y)
-          .attr('x2', d => d.x)
-          .attr('y2', d => d.y)
-          .attr('stroke', 'steelblue')
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', d => length(d))
-          .attr('stroke-dashoffset', d => length(d))
-          .transition()
-          .duration(500)
-          .delay((d, i) => i * 500 + 1000)
-          // .attr('stroke-dashoffset', d => 0)
-
-        g
-          .selectAll('circle.path')
-          .data(pathNodes)
-          .enter()
-          .append('circle')
-          .attr('class', 'path')
-          .attr('r', radius)
-          .attr('fill', '#FFF')
-          .attr('transform', d => `translate(${d.x},${d.y})`)
-          .attr('stroke', 'steelblue')
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', 2 * Math.PI * radius)
-          .attr('stroke-dashoffset', 2 * Math.PI * radius)
-          .transition()
-          .duration(500)
-          .delay((d, i) => i * 500)
-          .attr('stroke-dashoffset', 0)
-          
-        g.selectAll('text.path')
-          .data(pathNodes)
-          .enter()
-          .append('text')
-          .attr('class', 'path')
-          .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'middle')
-          .attr('transform', d => `translate(${d.x},${d.y + 1})`)
-          .style('font-size', '14px')
-          .text(d => d.data.value)
-        }
-      }
-      
+      // this.animate_path()
       return svg.node()
     }
   }

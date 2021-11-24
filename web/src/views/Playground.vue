@@ -1,6 +1,5 @@
 <template>
   <div id="playground">
-  Playground here
   <br>
   <BST/>
   </div>
