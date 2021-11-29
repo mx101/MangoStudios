@@ -3,6 +3,7 @@
     <div style="display: flex; justify-content: center; align-items: center;">
       <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="search_value" style="width: auto; font-size: 1em; text-align: center;"> 
       <button class="btn btn-primary" name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path">Watch Search</button>
+      <!-- <button class="btn btn-primary" name="submit" type="submit" style="margin: 0 0.75em" value="Clear Path" v-on:click="clear_path">Clear Path</button> -->
     </div>
     <br>
     <div id="bst" style="display: flex; justify-content: center; align-items: center;"/>
@@ -149,7 +150,19 @@ export default {
     this.generate_bst()
   },
   methods: {
+    clear_path() {
+      const margin = 20
+      var svg = d3.select("#bst")
+      var g = svg
+        .select('g')
+        .attr('transform', `translate(${margin},${margin})`)
+      
+      g.selectAll("line.path").remove()
+      g.selectAll("circle.path").remove()
+      g.selectAll('text.path').remove()
+    },
     animate_path() {
+      this.clear_path()
       const width = 800
       const height = 600
       const radius = 10
@@ -198,14 +211,14 @@ export default {
           .attr('y1', d => d.parent.y)
           .attr('x2', d => d.x)
           .attr('y2', d => d.y)
-          .attr('stroke', 'steelblue')
+          .attr('stroke', '#9fc5e8')
           .attr('stroke-width', 2)
           // length is likely the reason lines are drawing immediately
-          .attr('stroke-dasharray', d => length(d))
-          .attr('stroke-dashoffset', d => length(d))
+          // .attr('stroke-dasharray', d => length(d))
+          // .attr('stroke-dashoffset', d => length(d))
           .transition()
           .duration(500)
-          // .delay((d, i) => i * 500 + 1000)
+          .delay((i) => i * 500)
 
           g
             .selectAll('circle.path')
@@ -217,7 +230,7 @@ export default {
             .attr('fill', '#FFF')
             .attr('transform', d => `translate(${d.x},${d.y})`)
             .attr('stroke', 'steelblue')
-            .attr('stroke-width', 2)
+            .attr('stroke-width', 3)
             .attr('stroke-dasharray', 2 * Math.PI * radius)
             .attr('stroke-dashoffset', 2 * Math.PI * radius)
             .transition()
