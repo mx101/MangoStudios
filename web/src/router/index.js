@@ -8,7 +8,7 @@ import FinalGrades from '@/views/FinalGrades'
 const routes = [
   {
     path: '/',
-    name: 'Overview',
+    name: 'Landing',
     component: About
   },
   {
