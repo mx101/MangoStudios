@@ -4,6 +4,8 @@ import About from '@/views/About'
 import Playground from '@/views/Playground'
 import Exams from '@/views/Exams'
 import FinalGrades from '@/views/FinalGrades'
+import ResourcesMpLists from '@/views/ResourcesMpLists'
+import PreorderPlayground from '@/views/PreorderPlayground'
 
 const routes = [
   {
@@ -20,6 +22,16 @@ const routes = [
     path: '/Playground/BinarySearchTree',
     name: 'Playground',
     component: Playground
+  },
+  {
+    path: '/Playground/mp_lists',
+    name: 'ResourcesMpLists',
+    component: ResourcesMpLists
+  },
+  {
+    path: '/Playground/PreorderPlayground',
+    name: 'PreorderPlayground',
+    component: PreorderPlayground
   },
   {
     path: '/Exams',
