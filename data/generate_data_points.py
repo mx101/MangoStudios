@@ -1,9 +1,10 @@
 import random
+import numpy as np
 
 possible_non_tech_majors = ["Math", "Physics", "Chemistry", "Advertising", "English"]
 CS_MAJOR = "CS"
 ECE_MAJOR = "ECE"
-NUM_STUDENTS = 1000
+NUM_STUDENTS = 2000
 
 student_data = []
 
@@ -52,13 +53,13 @@ for i in range(NUM_STUDENTS):
         p = random.uniform(0,1)
         if (score > 75):
             num_commits = random.randint(4,11)
-            if (p > 0.75):
+            if (p > 0.35):
                 extra_credit = "Yes"
             else:
                 extra_credit = "No"
         else:
             num_commits = random.randint(2,9)
-            if (p > 0.35):
+            if (p > 0.7):
                 extra_credit = "Yes"
             else:
                 extra_credit = "No"
