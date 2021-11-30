@@ -7,19 +7,19 @@
   <div class="row" style="text-align: center; width:100%">
     <div class="col btn-group-toggle" data-toggle="buttons" style="text-align: center; width: auto">
         <input type="radio" id="exam1" value="exam1" v-model="exam" v-on:click="selectExam('exam1')">
-        <h4><label for="one" v-on:click="selectExam('exam1')">#Exam 1</label></h4>
+        <h4><label for="one" v-on:click="selectExam('exam1')">Exam 1</label></h4>
         <br>
         <br>
         <input type="radio" id="exam2" value="exam2" v-model="exam" v-on:click="selectExam('exam2')">
-        <h4><label for="exam2" v-on:click="selectExam('exam2')">#Exam 2</label></h4>
+        <h4><label for="exam2" v-on:click="selectExam('exam2')">Exam 2</label></h4>
         <br>
         <br>
         <input type="radio" id="exam3" value="exam3" v-model="exam" v-on:click="selectExam('exam3')">
-        <h4><label for="exam3" v-on:click="selectExam('exam3')">#Exam 3</label></h4>
+        <h4><label for="exam3" v-on:click="selectExam('exam3')">Exam 3</label></h4>
         <br>
         <br>
         <input type="radio" id="final_exam" value="final_exam" v-model="exam" v-on:click="selectExam('final_exam')">
-        <h4><label for="final_exam" v-on:click="selectExam('final_exam')">#Final Exam</label></h4>
+        <h4><label for="final_exam" v-on:click="selectExam('final_exam')">Final Exam</label></h4>
         <br>
         <br>
         <!-- <div class = "row">
@@ -118,10 +118,13 @@ export default {
           image: null,
           major: "",
           year: "",
-          exam: "",
+          exam: "exam1",
           avg: "",
           behavior: "",
       }
+  },
+  mounted() {
+      this.buildFileName("exam1")
   },
   methods: {
     changeGraph (event) {
