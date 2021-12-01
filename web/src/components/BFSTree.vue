@@ -280,7 +280,7 @@ export default {
         .delay((path.length - 1) * 500)
         .style("opacity", 1)
         .style('font-size', '24px')
-        .style('color', '#00FF00')
+        .style('color', 'lawngreen')
         .transition()
         .duration(1000)
         .transition()
@@ -299,7 +299,13 @@ export default {
         .attr('r', radius)
         .attr('fill', '#FFF')
         .attr('transform', d => `translate(${d.x},${d.y})`)
-        .attr('stroke', 'steelblue')
+        .attr('stroke', function(d, i) {
+            if (i !== path.length - 1) {
+              return 'steelblue';
+            } else {
+              return 'lawngreen';
+            }  
+        })
         .attr('stroke-width', 3)
         .attr('stroke-dasharray', 2 * Math.PI * radius)
         .attr('stroke-dashoffset', 2 * Math.PI * radius)
@@ -309,6 +315,13 @@ export default {
             return i * 500;
         })
         .attr('stroke-dashoffset', 0)
+        .transition()
+        .duration(function(d, i) {
+            return (path.length - 1)*500 + 1000 - i * 500;
+        })
+        .transition()
+        .duration(500)
+        .attr('stroke-dashoffset', 2 * Math.PI * radius)
         
       g.selectAll('text.path')
         .data(pathNodes)

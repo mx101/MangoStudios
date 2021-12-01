@@ -7,6 +7,8 @@ import FinalGrades from '@/views/FinalGrades'
 import ResourcesMpLists from '@/views/ResourcesMpLists'
 import PreorderPlayground from '@/views/PreorderPlayground'
 import MPs from '@/views/MPs'
+import InorderPlayground from '@/views/InorderPlayground'
+import PostorderPlayground from '@/views/PostorderPlayground'
 
 const routes = [
   {
@@ -33,6 +35,16 @@ const routes = [
     path: '/Playground/PreorderPlayground',
     name: 'PreorderPlayground',
     component: PreorderPlayground
+  },  
+  {
+    path: '/Playground/InorderPlayground',
+    name: 'InorderPlayground',
+    component: InorderPlayground
+  },
+  {
+    path: '/Playground/PostorderPlayground',
+    name: 'PostorderPlayground',
+    component: PostorderPlayground
   },
   {
     path: '/Exams',

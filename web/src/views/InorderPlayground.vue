@@ -1,11 +1,12 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px" id="concept">
-    Preorder Traversal
+    Inorder Traversal
   </h1>
-  <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
+  <h2 class="hover" style="padding-left:30px;" v-on:click="testing" id="parentconcept">
     mp_lists
   </h2>
+
   <div style="text-align:center; padding-top:100px">
 
     <div id="jumbotron-container" class="row">
@@ -27,18 +28,17 @@
   </div>
 </template>
 
-componentDidMount() {
-  window.scrollTo(0, 0)
-}
-
 <script>
-import BST from "../components/BSTTraversalPreorder.vue"
+import BST from "../components/BSTTraversalInorder.vue"
 import * as d3 from 'd3'
 
 export default {
   name: 'Playground',
   components: {
     BST
+  },
+  mounted() {
+    window.scrollTo(0, 0)
   },
   methods: {
     testing() {

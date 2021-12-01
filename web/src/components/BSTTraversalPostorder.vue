@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="display: flex; justify-content: center; align-items: center;">
-      <button class="btn btn-primary" name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path">Watch Preorder Traversal</button>
+      <button class="btn btn-primary" name="submit" type="submit" style="margin: 0 0.75em" value="Watch Search" v-on:click="animate_path">Watch Postorder Traversal</button>
     </div>
 
     <br>
@@ -238,7 +238,7 @@ export default {
       var g = svg
         .select('g')
         .attr('transform', `translate(${margin},${margin})`);
-      var path = this.tree_.getPreorder();
+      var path = this.tree_.getPostorder();
       var pathNodes = nodes.filter(n => path.includes(n.data.value)).sort(function(a, b){
           var ai = 0;
           for(let k = 0; k < path.length; k++) {

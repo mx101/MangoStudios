@@ -1,10 +1,10 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px;">
-    MP Resources
+    mp_lists
   </h1>
   <h2 style="padding-left:30px;padding-bottom:50px;font-size:40px">
-    mp_lists
+    MP Resources
   </h2>
   <div style="text-align:center">
     <div id="jumbotron-container" class="row">
@@ -29,15 +29,15 @@
       </div>
       </a>
 
-      <a href="#/Playground/PreorderPlayground" class="col me-4">
+      <a href="#/Playground/InorderPlayground" class="col me-4">
       <div id="jumbotronHover">
-        <h2 style="text-align:center">Preorder Traversal</h2>
+        <h2 style="text-align:center">Inorder Traversal</h2>
       </div>
       </a>
 
-      <a href="#/Playground/PreorderPlayground" class="col">
+      <a href="#/Playground/PostorderPlayground" class="col">
       <div id="jumbotronHover">
-        <h2 style="text-align:center">Preorder Traversal</h2>
+        <h2 style="text-align:center">Postorder Traversal</h2>
       </div>
       </a>
     </div>
