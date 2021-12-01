@@ -6,6 +6,7 @@ import Exams from '@/views/Exams'
 import FinalGrades from '@/views/FinalGrades'
 import ResourcesMpLists from '@/views/ResourcesMpLists'
 import PreorderPlayground from '@/views/PreorderPlayground'
+import MPs from '@/views/MPs'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/FinalGrades',
     name: 'FinalGrades',
     component: FinalGrades
+  },
+  {
+    path:'/MPs',
+    name: 'MPs',
+    component: MPs
   }
 ]
 
