@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import BST from "../components/BSTTraversal.vue"
+import BST from "../components/BFSTree.vue"
 
 export default {
   name: 'Playground',
