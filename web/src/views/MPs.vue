@@ -106,17 +106,13 @@
             <div class="row">
                 Completed POTDs
                 <br>
-            </div>
-            <div class="row">
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="completed_potds" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="completed_potds" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
                 Autograder runs used
                 <br>
-            </div>
-            <div class="row">
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="autograders_used" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="autograders_used" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
@@ -163,7 +159,7 @@ export default {
 
   },
   methods: {
-    getImgUrl(changing_to) {
+      getImgUrl(changing_to) {
         var images = require.context('../assets/exams/', false, /\.jpg$/)
         return images('./' + changing_to + ".jpg")
     },
@@ -177,6 +173,21 @@ export default {
         }
 
         this.buildFileName(this.exam)
+    },
+    changeExpectedGrade () {
+        if (this.completed_potds > 135) {
+            this.completed_potds = 135
+        }
+        if (this.autograders_used > 12) {
+            this.autograders_used = 12
+        }
+        if (this.completed_potds < 0) {
+            this.completed_potds = 0
+        }
+        if (this.autograders_used < 0) {
+            this.autograders_used = 0
+        }
+        this.expectedGrade = Math.floor(62 + (this.completed_potds/130)*29 + (this.autograders_used/9)*12);
     },
   }
 }
