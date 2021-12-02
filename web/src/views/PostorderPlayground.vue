@@ -1,22 +1,23 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px" id="concept">
-    Preorder Traversal
+    Postorder Traversal
   </h1>
   <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
     mp_lists
   </h2>
+
   <div style="text-align:center; padding-top:100px">
 
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">
-            Preorder Traversal is one of the many ways to traverse through an entire binary tree.
-            <br>The key difference is that the root node is visted first, and then the left and right nodes. 
-            <br>Preorder Traversal is useful when you want to visit any node before visiting its children
+            Postorder Traversal is one of the many ways to traverse through an entire binary tree.
+            <br>The key difference is that the root node is visted last, with the left and right children nodes being visted before visting the root. 
+            <br>Postorder Traversal is useful when you want to visit all the children nodes before visiting the parent nodes.
             <br>
-            <br>The traversal again is <b>Root, Left, Right </b>
+            <br>The traversal again is <b>Left, Right, Root </b>
             </h3>
       </div>
     </div>
@@ -32,7 +33,7 @@ componentDidMount() {
 }
 
 <script>
-import BST from "../components/BSTTraversalPreorder.vue"
+import BST from "../components/BSTTraversalPostorder.vue"
 import * as d3 from 'd3'
 
 export default {

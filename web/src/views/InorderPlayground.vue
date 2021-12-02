@@ -1,22 +1,23 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px" id="concept">
-    Preorder Traversal
+    Inorder Traversal
   </h1>
-  <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
+  <h2 class="hover" style="padding-left:30px;" v-on:click="testing" id="parentconcept">
     mp_lists
   </h2>
+
   <div style="text-align:center; padding-top:100px">
 
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">
-            Preorder Traversal is one of the many ways to traverse through an entire binary tree.
-            <br>The key difference is that the root node is visted first, and then the left and right nodes. 
-            <br>Preorder Traversal is useful when you want to visit any node before visiting its children
+            Inorder Traversal is one of the many ways to traverse through an entire binary tree.
+            <br>The key difference is that the nodes to the left are visted before the root node and then the right child is visted. 
+            <br>Inorder traversal will visit nodes in order if the binary tree is sorted!
             <br>
-            <br>The traversal again is <b>Root, Left, Right </b>
+            <br>The traversal again is <b>Left, Root, Right </b>
             </h3>
       </div>
     </div>
@@ -27,12 +28,8 @@
   </div>
 </template>
 
-componentDidMount() {
-  window.scrollTo(0, 0)
-}
-
 <script>
-import BST from "../components/BSTTraversalPreorder.vue"
+import BST from "../components/BSTTraversalInorder.vue"
 import * as d3 from 'd3'
 
 export default {

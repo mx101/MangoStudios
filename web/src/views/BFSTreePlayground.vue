@@ -1,11 +1,12 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px" id="concept">
-    Preorder Traversal
+    Breath First Search Binary Tree
   </h1>
   <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
-    mp_lists
+    mp_traversal
   </h2>
+
   <div style="text-align:center; padding-top:100px">
 
     <div id="jumbotron-container" class="row">
@@ -32,7 +33,7 @@ componentDidMount() {
 }
 
 <script>
-import BST from "../components/BSTTraversalPreorder.vue"
+import BST from "../components/BFSTree.vue"
 import * as d3 from 'd3'
 
 export default {
@@ -55,7 +56,7 @@ export default {
         .style('font-size', '0px')
         .transition()
         .duration(100)
-        .on("end", function() {window.location.href = "#/Playground/mp_lists"});
+        .on("end", function() {window.location.href = "#/Playground/mp_traversal"});
 
       d3.select("#parentconcept")
         .attr('text-anchor', 'middle')

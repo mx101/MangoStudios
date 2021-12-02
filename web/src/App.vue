@@ -26,7 +26,7 @@
                           <li><a class="dropdown-item" href="#/Playground">mp_intro</a></li>
                           <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">mp_stickers</a></li>
                           <li><a class="dropdown-item" href="#/Playground/mp_lists">mp_lists</a></li>
-                          <li><a class="dropdown-item" href="#/Playground">mp_traversals</a></li>
+                          <li><a class="dropdown-item" href="#/Playground/mp_traversal">mp_traversal</a></li>
                           <li><a class="dropdown-item" href="#/Playground">mp_mosaics</a></li>
                           <li><a class="dropdown-item" href="#/Playground">mp_mazes</a></li>
                         </ul>

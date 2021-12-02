@@ -1,7 +1,7 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px;">
-    mp_lists
+    mp_traversal
   </h1>
   <h2 style="padding-left:30px;padding-bottom:50px;font-size:40px">
     MP Resources
@@ -11,11 +11,8 @@
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">Binary Search alogorithm is an efficent way to locate a node in a binary tree. 
-            <br>Utlizing the fact that the binary tree is sorted, the tree compares the value searching for with the value on the node currently on to decide which side of the tree to continue searching.
-            <br>
-            <br>As such, the area of search is cut in half with every comparison.
-            <br>
-            <br>For MPs where Binary Search Tree understanding is important, understanding the order of comparison and which nodes would be traversed is most important
+            <br>This is stuff relating to mp mp_traversals
+            <br>This mp's goal are these and you need to know these techniques.
             </h3>
       </div>
     </div>
@@ -23,21 +20,15 @@
     Explore
   </h2>
     <div id="jumbotron-container" class="row">
-      <a href="#/Playground/PreorderPlayground" class="col me-4">
+      <a href="#/Playground/BFSTreePlayground" class="col me-4">
       <div id="jumbotronHover">
-        <h2 style="text-align:center">Preorder Traversal</h2>
+        <h2 style="text-align:center">BFS Tree Visualization</h2>
       </div>
       </a>
 
-      <a href="#/Playground/InorderPlayground" class="col me-4">
+      <a href="#/Playground/DFSTreePlayground" class="col">
       <div id="jumbotronHover">
-        <h2 style="text-align:center">Inorder Traversal</h2>
-      </div>
-      </a>
-
-      <a href="#/Playground/PostorderPlayground" class="col">
-      <div id="jumbotronHover">
-        <h2 style="text-align:center">Postorder Traversal</h2>
+        <h2 style="text-align:center">DFS Tree Visualization</h2>
       </div>
       </a>
     </div>
