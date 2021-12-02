@@ -5,10 +5,15 @@ import Playground from '@/views/Playground'
 import Exams from '@/views/Exams'
 import FinalGrades from '@/views/FinalGrades'
 import ResourcesMpLists from '@/views/ResourcesMpLists'
+import ResourcesMpTraversal from '@/views/ResourcesMpTraversal'
+
 import PreorderPlayground from '@/views/PreorderPlayground'
 import MPs from '@/views/MPs'
 import InorderPlayground from '@/views/InorderPlayground'
 import PostorderPlayground from '@/views/PostorderPlayground'
+
+import BFSTreePlayground from '@/views/BFSTreePlayground'
+import DFSTreePlayground from '@/views/DFSTreePlayground'
 
 const routes = [
   {
@@ -32,6 +37,11 @@ const routes = [
     component: ResourcesMpLists
   },
   {
+    path: '/Playground/mp_traversal',
+    name: 'ResourcesMpTraversal',
+    component: ResourcesMpTraversal
+  },
+  {
     path: '/Playground/PreorderPlayground',
     name: 'PreorderPlayground',
     component: PreorderPlayground
@@ -45,6 +55,16 @@ const routes = [
     path: '/Playground/PostorderPlayground',
     name: 'PostorderPlayground',
     component: PostorderPlayground
+  },
+  {
+    path: '/Playground/BFSTreePlayground',
+    name: 'BFSTreePlayground',
+    component: BFSTreePlayground
+  },
+  {
+    path: '/Playground/DFSTreePlayground',
+    name: 'DFSTreePlayground',
+    component: DFSTreePlayground
   },
   {
     path: '/Exams',
