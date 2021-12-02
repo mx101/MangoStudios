@@ -21,14 +21,6 @@
                             MP Resources
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-                          <li><a class="dropdown-item" href="#/Playground">lab_avl: AVL Trees</a></li>
-                          <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">lab_trees: Binary Search Trees</a></li>
-                          <div class="dropdown-divider"></div>
-                          <li><a class="dropdown-item" href="#/Playground">mp_traversals: Breadth-First Search</a></li>
-                          <li><a class="dropdown-item" href="#/Playground">mp_traversals: Depth-First Search</a></li>
-                            
-=======
                           <li><a class="dropdown-item" href="#/Playground">All</a></li>
                           <div class="dropdown-divider"></div>
                           <li><a class="dropdown-item" href="#/Playground">mp_intro</a></li>
@@ -37,7 +29,6 @@
                           <li><a class="dropdown-item" href="#/Playground">mp_traversals</a></li>
                           <li><a class="dropdown-item" href="#/Playground">mp_mosaics</a></li>
                           <li><a class="dropdown-item" href="#/Playground">mp_mazes</a></li>
->>>>>>> 897db3505bf984df9891e09a385def4ac0750602
                         </ul>
                     </li>
 
