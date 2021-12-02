@@ -1,0 +1,123 @@
+<template>
+  <div id="playground">
+  <h1 style="padding-left:30px" id="concept">
+    Inorder Traversal
+  </h1>
+  <h2 class="hover" style="padding-left:30px;" v-on:click="testing" id="parentconcept">
+    mp_lists
+  </h2>
+
+  <div style="text-align:center; padding-top:100px">
+
+    <div id="jumbotron-container" class="row">
+      <div id="jumbotron" class="col">
+        <h2>Summary</h2>
+        <h3 style="text-align:left">
+            Preorder Traversal is one of the many ways to traverse through an entire binary tree.
+            <br>The key difference is that the root node is visted first, and then the left and right nodes. 
+            <br>Preorder Traversal is useful when you want to visit any node before visiting its children
+            <br>
+            <br>The traversal again is <b>Root, Left, Right </b>
+            </h3>
+      </div>
+    </div>
+    <BST/>
+    <br><br><br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CM7vN1D6dw?start=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  </div>
+</template>
+
+<script>
+import BST from "../components/BSTTraversalInorder.vue"
+import * as d3 from 'd3'
+
+export default {
+  name: 'Playground',
+  components: {
+    BST
+  },
+  mounted() {
+    window.scrollTo(0, 0)
+  },
+  methods: {
+    testing() {
+      console.log("test")
+      
+      d3.select("#concept")
+        .style("opacity", 1)
+        .transition()
+        .duration(500)
+        .style("opacity", 0)
+        .style('font-size', '0px')
+        .transition()
+        .duration(100)
+        .on("end", function() {window.location.href = "#/Playground/mp_lists"});
+
+      d3.select("#parentconcept")
+        .attr('text-anchor', 'middle')
+        .style('font-size', 'calc(2em + 1vw)')
+        .style('font-weight', '600')
+        .style('background', 'white')
+        .transition()
+        .duration(200)
+        .style('font-size', 'calc(4em + 1vw)')
+        .style('font-weight', '700')
+        .style('letter-spacing', '0px')
+        .style('padding-left', '30px')
+        
+    }
+  }
+}
+</script>
+<!-- styling for the component -->
+<style scoped>
+    #playground {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* text-align: center; */
+    color: #2c3e50;
+    margin-top: 60px;
+    }
+    #jumbotron-container {
+        width: 100%;
+        padding: 0% 5% 5% 5%;
+    } 
+    #jumbotron {
+        background-color: #f8fafa;
+        text-align: center;
+        border-radius: 50px;
+        padding: 2% 4%;
+        box-shadow: 2px 2px 22px rgba(0, 0, 0, 0.2);
+    }
+    #playground h1 {
+        font-size: calc(4em + 1vw);
+        font-weight: 700;
+        margin: 0;
+    }
+
+    #playground h2 {
+        font-size: calc(1em + 1vw);
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    #playground h2.hover {
+        background:Gainsboro;
+        font-size: calc(2em + 1vw);
+        font-weight: 600;
+        letter-spacing: 2px;
+        transition: 0.3s;
+        /* margin: 0; */
+    }
+    #playground h2.hover:hover {
+        color:lightseagreen;
+        background:lightgray;
+    }
+
+    #playground h3 {
+        font-size: calc(0.5em + 1vw);
+        font-weight: 400;
+    }
+</style>
