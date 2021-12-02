@@ -92,13 +92,13 @@
             <div class="row">
                 Completed POTDs
                 <br>
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="completed_potds" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="completed_potds" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
                 Autograder runs used
                 <br>
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="autograders_used" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="autograders_used" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
@@ -141,7 +141,21 @@ export default {
 
   },
   methods: {
-
+      changeExpectedGrade () {
+        if (this.completed_potds > 135) {
+            this.completed_potds = 135
+        }
+        if (this.autograders_used > 12) {
+            this.autograders_used = 12
+        }
+        if (this.completed_potds < 0) {
+            this.completed_potds = 0
+        }
+        if (this.autograders_used < 0) {
+            this.autograders_used = 0
+        }
+        this.expectedGrade = Math.floor(62 + (this.completed_potds/130)*29 + (this.autograders_used/9)*12);
+    },
   }
 }
 </script>
