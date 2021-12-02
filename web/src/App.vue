@@ -21,10 +21,11 @@
                             MP Resources
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#/Playground">AVL Trees</a></li>
-                          <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">Binary Search Tree</a></li>
-                          <li><a class="dropdown-item" href="#/Playground">Breadth-First Search</a></li>
-                          <li><a class="dropdown-item" href="#/Playground">Depth-First Search</a></li>
+                          <li><a class="dropdown-item" href="#/Playground">lab_avl: AVL Trees</a></li>
+                          <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">lab_trees: Binary Search Trees</a></li>
+                          <div class="dropdown-divider"></div>
+                          <li><a class="dropdown-item" href="#/Playground">mp_traversals: Breadth-First Search</a></li>
+                          <li><a class="dropdown-item" href="#/Playground">mp_traversals: Depth-First Search</a></li>
                             
                         </ul>
                     </li>
