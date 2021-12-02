@@ -50,6 +50,9 @@
     </div>
     <div class="col" style="text-align: center; width:auto" v-if="this.image != null">
     <div class="row">
+        <!-- Save major, year -->
+    </div>
+    <div class="row">
     <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName('')">
         <option disabled value="">Select Major</option>
         <option>CS</option>
