@@ -193,11 +193,15 @@ export default {
             }
             
         }
+
+        // uncomment the below line when data is turned into csv format for d3 stuff
+        // filename = filename + ".csv"
         
         console.log(filename)
         this.image = getImgUrl(filename)
         return selectExam
-    }, clearField(field) {
+    }, 
+    clearField(field) {
         if (field == "major") {
             this.major = ""
         } else if (field == "year") {
