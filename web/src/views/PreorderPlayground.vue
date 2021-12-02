@@ -40,6 +40,9 @@ export default {
   components: {
     BST
   },
+  mounted() {
+    window.scrollTo(0, 0)
+  },
   methods: {
     testing() {
       console.log("test")

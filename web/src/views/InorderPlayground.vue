@@ -13,11 +13,11 @@
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">
-            Preorder Traversal is one of the many ways to traverse through an entire binary tree.
-            <br>The key difference is that the root node is visted first, and then the left and right nodes. 
-            <br>Preorder Traversal is useful when you want to visit any node before visiting its children
+            Inorder Traversal is one of the many ways to traverse through an entire binary tree.
+            <br>The key difference is that the nodes to the left are visted before the root node and then the right child is visted. 
+            <br>Inorder traversal will visit nodes in order if the binary tree is sorted!
             <br>
-            <br>The traversal again is <b>Root, Left, Right </b>
+            <br>The traversal again is <b>Left, Root, Right </b>
             </h3>
       </div>
     </div>
