@@ -6,6 +6,8 @@
     </h1>
 
     <div class="row" style="width:75%">
+        <jumbotron>
+        </jumbotron>
         <div class="col">
            <img style="padding-left:30px" src="/img/filter.png" alt="filter" width="80" height="50">
         </div>
@@ -191,7 +193,7 @@ export default {
         d3.select("svg").remove();
 
         // set the dimensions and margins of the graph
-        const margin = {top: 80, right: 80, bottom: 80, left: 80},
+        const margin = {top: 80, right: 200, bottom: 80, left: 80},
             width = 1100 - margin.left - margin.right,
             height = 800 - margin.top - margin.bottom;
 
@@ -320,12 +322,12 @@ export default {
                                 label: "The average final grade was 82%",
                                 wrap: 125
                             }, 
-                            x: 300,
-                            y: 225,
-                            dy: 75,
-                            dx: 75,
+                            x: 780,
+                            y: 125,
+                            dy: 50,
+                            dx: 90,
                             type: annotation.annotationCalloutElbow,
-                            connector: { end: "dot" },
+                            connector: { end: "arrow", type: "curve" },
                         }
                     ]
                     const annotations2 = [

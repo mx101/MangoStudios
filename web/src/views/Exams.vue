@@ -207,7 +207,7 @@ export default {
         d3.select("svg").remove();
 
         // set the dimensions and margins of the graph
-        const margin = {top: 80, right: 80, bottom: 80, left: 80},
+        const margin = {top: 80, right: 200, bottom: 80, left: 80},
             width = 1100 - margin.left - margin.right,
             height = 800 - margin.top - margin.bottom;
 
@@ -336,7 +336,7 @@ export default {
                                 label: "The average exam grade was 76%",
                                 wrap: 125
                             }, 
-                            x: 300,
+                            x: 860,
                             y: 225,
                             dy: 75,
                             dx: 75,
@@ -368,7 +368,7 @@ export default {
                                 label: "The average grade earned on Exam 3 was 72%",
                                 wrap: 125
                             }, 
-                            x: 300,
+                            x: 600,
                             y: 225,
                             dy: 75,
                             dx: 75,
