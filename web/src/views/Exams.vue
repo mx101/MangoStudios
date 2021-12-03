@@ -50,6 +50,9 @@
     </div>
     <div class="col" style="text-align: center; width:auto" v-if="this.image != null">
     <div class="row">
+        <!-- Save major, year -->
+    </div>
+    <div class="row">
     <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName('')">
         <option disabled value="">Select Major</option>
         <option>CS</option>
@@ -193,11 +196,15 @@ export default {
             }
             
         }
+
+        // uncomment the below line when data is turned into csv format for d3 stuff
+        // filename = filename + ".csv"
         
         console.log(filename)
         this.image = getImgUrl(filename)
         return selectExam
-    }, clearField(field) {
+    }, 
+    clearField(field) {
         if (field == "major") {
             this.major = ""
         } else if (field == "year") {

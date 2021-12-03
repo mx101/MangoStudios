@@ -81,17 +81,20 @@ const routes = [
   {
     path: '/Exams',
     name: 'Exams',
-    component: Exams
+    component: Exams,
+    props: true
   },
   {
     path: '/FinalGrades',
     name: 'FinalGrades',
-    component: FinalGrades
+    component: FinalGrades,
+    props: true
   },
   {
     path:'/MPs',
     name: 'MPs',
-    component: MPs
+    component: MPs,
+    props: true
   }
 ]
 
