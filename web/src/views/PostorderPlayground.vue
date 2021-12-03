@@ -1,9 +1,9 @@
 <template>
   <div id="playground">
-  <h1 style="padding-left:30px" id="concept">
+  <h1 style="padding-left:5%" id="concept">
     Postorder Traversal
   </h1>
-  <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
+  <h2 class="hover" style="padding-left:5%;font-size:40px" v-on:click="testing" id="parentconcept">
     mp_lists
   </h2>
 
@@ -67,7 +67,6 @@ export default {
         .style('font-size', 'calc(4em + 1vw)')
         .style('font-weight', '700')
         .style('letter-spacing', '0px')
-        .style('padding-left', '30px')
         
     }
   }

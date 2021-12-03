@@ -69,6 +69,16 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  name: 'Playground',
+  mounted() {
+    window.scrollTo(0, 0)
+  }
+}
+</script>
+
 <style scoped>
     #playground {
     font-family: "Montserrat", sans-serif;

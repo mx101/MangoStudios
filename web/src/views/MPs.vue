@@ -78,7 +78,7 @@
 
     <div class="row" style="width:100%">
         <div class="col">
-            <div id="my_dataviz"></div>
+            <div id="my_dataviz" style="padding-left:100px"></div>
         </div>
 
         <div class="col">
@@ -238,8 +238,8 @@ export default {
 
         // set the dimensions and margins of the graph
         const margin = {top: 80, right: 80, bottom: 80, left: 80},
-            width = 500 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            width = 1100 - margin.left - margin.right,
+            height = 800 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         const svg = d3.select("#my_dataviz")
