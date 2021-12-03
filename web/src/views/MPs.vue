@@ -104,15 +104,6 @@
         </div>
     </div>
 
-    <div class="row" style="width:75%">
-        <div class="col">
-            Average grade {{this.avgGrade}}% +- {{this.gradeStdDev}}
-        </div>
-
-        <div class="col">
-            Average POTDS {{this.avgPotds}}% +- {{this.potdsStdDev}}
-        </div>
-    </div>
     </div>
 </template>
 
