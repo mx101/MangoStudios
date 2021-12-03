@@ -22,7 +22,6 @@
     </div>
     <BST/>
     <br><br><br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CM7vN1D6dw?start=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   </div>
 </template>
@@ -76,7 +75,7 @@ export default {
 <!-- styling for the component -->
 <style scoped>
     #playground {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* text-align: center; */
@@ -117,6 +116,7 @@ export default {
     #playground h2.hover:hover {
         color:lightseagreen;
         background:lightgray;
+        cursor: pointer;
     }
 
     #playground h3 {

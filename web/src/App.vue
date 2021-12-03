@@ -21,10 +21,10 @@
                             MP Resources
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#/Playground">All</a></li>
+                          <li><a class="dropdown-item" href="#/Playground/ResourcesAll">All</a></li>
                           <div class="dropdown-divider"></div>
                           <li><a class="dropdown-item" href="#/Playground">mp_intro</a></li>
-                          <li><a class="dropdown-item" href="#/Playground/BinarySearchTree">mp_stickers</a></li>
+                          <li><a class="dropdown-item" href="#/Playground">mp_stickers</a></li>
                           <li><a class="dropdown-item" href="#/Playground/mp_lists">mp_lists</a></li>
                           <li><a class="dropdown-item" href="#/Playground/mp_traversal">mp_traversal</a></li>
                           <li><a class="dropdown-item" href="#/Playground">mp_mosaics</a></li>

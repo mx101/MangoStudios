@@ -13,17 +13,16 @@
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">
-            Preorder Traversal is one of the many ways to traverse through an entire binary tree.
-            <br>The key difference is that the root node is visted first, and then the left and right nodes. 
-            <br>Preorder Traversal is useful when you want to visit any node before visiting its children
+            Depth First Search (DFS) is a way to search trees and graphs for a value.
+            <br>It is especially useful when the tree/graph is not sorted
             <br>
-            <br>The traversal again is <b>Root, Left, Right </b>
+            <br>A key attribute of DFS is that it will always search extremly deep
+            <br>As such, this is better for deeper trees and graphs
             </h3>
       </div>
     </div>
     <BST/>
     <br><br><br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CM7vN1D6dw?start=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   </div>
 </template>
@@ -77,7 +76,7 @@ export default {
 <!-- styling for the component -->
 <style scoped>
     #playground {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* text-align: center; */
@@ -118,6 +117,7 @@ export default {
     #playground h2.hover:hover {
         color:lightseagreen;
         background:lightgray;
+        cursor: pointer;
     }
 
     #playground h3 {
