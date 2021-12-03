@@ -11,3 +11,19 @@ Run `npm install`
 Run `npm run serve`
 
 The website should now be running on localhost:8080
+
+## Functional Pages
+
+- Overview
+
+- MP Resources/All
+
+- MP Resources/mp_lists
+
+- MP Resources/mp_traversal
+
+- Stats/MPs
+
+- Stats/Exams
+
+- Stats/Final Grades
