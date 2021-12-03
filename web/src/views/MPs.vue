@@ -1,28 +1,11 @@
 <template>
 	<div id="mps">
-		<h1 style="padding-left: 30px">
-			<br />
-			MPs
-		</h1>
+		<h1>MPs</h1>
+		<h2>Select a filter to explore the data</h2>
 
 		<div class="row" style="width: 75%">
 			<div class="col">
-				<img
-					style="padding-left: 30px"
-					src="/img/filter.png"
-					alt="filter"
-					width="80"
-					height="50"
-				/>
-			</div>
-
-			<div class="col">
-				<select
-					class="form-select"
-					style="width: auto"
-					v-model="mp"
-					@change="updateData()"
-				>
+				<select class="form-select" v-model="mp" @change="updateData()">
 					<option disabled value="">MP</option>
 					<option>mp_intro</option>
 					<option>mp_stickers</option>
@@ -36,7 +19,6 @@
 			<div class="col">
 				<select
 					class="form-select"
-					style="width: auto"
 					v-model="student_behaviors"
 					@change="updateData()"
 				>
@@ -55,12 +37,7 @@
 			</div>
 
 			<div class="col">
-				<select
-					class="form-select"
-					style="width: auto"
-					v-model="major"
-					@change="updateData()"
-				>
+				<select class="form-select" v-model="major" @change="updateData()">
 					<option disabled value="">Major</option>
 					<option>Advertising</option>
 					<option>CS</option>
@@ -80,12 +57,7 @@
 			</div>
 
 			<div class="col">
-				<select
-					class="form-select"
-					style="width: auto"
-					v-model="year"
-					@change="updateData()"
-				>
+				<select class="form-select" v-model="year" @change="updateData()">
 					<option disabled value="">Year</option>
 					<option>Freshman</option>
 					<option>Sophomore</option>
@@ -106,15 +78,16 @@
 
 		<div class="row" style="width: 100%">
 			<div class="col">
-				<div id="my_dataviz" style="padding-left: 100px"></div>
+				<div id="my_dataviz"></div>
 			</div>
 
-			<div id="jumbotron" class="col">
-				<b>Personal Forecast</b>
-				<br />
-				<div style="padding: 50px" class="row">
-					Completed POTDs
+			<div style="margin-top: 7.5%" id="jumbotron" class="col">
+				<h2>Personal Forecast</h2>
+				<hr class="mb-0 mt-1" />
+				<div id="forecast-padding" class="row">
+					<h3>Completed POTDs</h3>
 					<br />
+
 					<input
 						name="input"
 						class="form-control"
@@ -128,8 +101,8 @@
 					/>
 				</div>
 
-				<div class="row">
-					Autograder runs used
+				<div id="forecast-padding" class="row">
+					<h3>Autograder Runs Used</h3>
 					<br />
 					<input
 						name="input"
@@ -141,14 +114,13 @@
 						autocomplete="off"
 						v-model="autograders_used"
 						@change="changeExpectedGrade()"
-						style="width: auto; font-size: 1em; text-align: center"
 					/>
 				</div>
 
-				<div class="row">
-					Expected Grade
+				<div id="forecast-padding" class="row">
+					<h3>Expected Grade</h3>
 					<br />
-					{{ this.expectedGrade }}%
+					<h1>{{ this.expectedGrade }}%</h1>
 				</div>
 			</div>
 		</div>
@@ -287,7 +259,7 @@ export default {
 			d3.select("svg").remove();
 
 			// set the dimensions and margins of the graph
-			const margin = { top: 80, right: 80, bottom: 80, left: 80 },
+			const margin = { top: 40, right: 80, bottom: 80, left: 60 },
 				width = 1100 - margin.left - margin.right,
 				height = 800 - margin.top - margin.bottom;
 
@@ -764,30 +736,45 @@ export default {
 	background-color: #002855;
 }
 
-#intro-section {
+#mps {
 	height: 100vh;
 	width: 100vw;
 	padding: 2.5% 7.5% 5%;
 	font-family: "Montserrat", sans-serif;
 }
 
-#intro-section h1 {
+#mps h1 {
 	font-size: calc(4em + 1vw);
 	font-weight: 700;
+	margin: 0;
 }
 
-#intro-section h2 {
+#mps h2 {
 	font-size: calc(1em + 1vw);
 	font-weight: 600;
 	letter-spacing: 2px;
+}
+
+#mps h3 {
+	font-size: calc(0.25em + 1vw);
+	font-weight: 500;
+	text-align: left;
+	margin-left: 0;
 }
 
 #jumbotron {
 	background-color: #f8fafa;
 	text-align: center;
 	border-radius: 25px;
-	padding: 2% 1%;
+	padding: 2% 3%;
 	box-shadow: 2px 2px 22px rgba(0, 0, 0, 0.2);
+	height: 90%;
+}
+
+#forecast-padding {
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10%;
 }
 
 #app {
