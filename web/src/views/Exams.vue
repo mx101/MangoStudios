@@ -82,12 +82,6 @@
             </div>
 
             <div class="row">
-                Autograder runs used
-                <br>
-                <input name="input" class="form-control" type="number" step="1" min="0" max="10" autocomplete="off" v-model="autograders_used" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
-            </div>
-
-            <div class="row">
                 Expected Grade
                 <br>
                 {{this.expectedGrade}}%
@@ -116,7 +110,6 @@ export default {
           avgPotds: 0,
           potdsStdDev: 0,
           completed_potds: 0,
-          autograders_used: 0,
           major: "",
           year: "",
           student_behaviors: "",
@@ -150,16 +143,10 @@ export default {
         if (this.completed_potds > 135) {
             this.completed_potds = 135
         }
-        if (this.autograders_used > 12) {
-            this.autograders_used = 12
-        }
         if (this.completed_potds < 0) {
             this.completed_potds = 0
         }
-        if (this.autograders_used < 0) {
-            this.autograders_used = 0
-        }
-        this.expectedGrade = Math.floor(62 + (this.completed_potds/130)*29 + (this.autograders_used/9)*12);
+        this.expectedGrade = Math.floor(72 + (this.completed_potds/130)*28);
     },
     updateData() {
         // Clear previous content
