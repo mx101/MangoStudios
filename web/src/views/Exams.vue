@@ -121,6 +121,7 @@ export default {
           year: "",
           student_behaviors: "",
           mp: "Exam 1",
+          annotation: "Gradea aaa",
       }
   },
   mounted() {
@@ -234,7 +235,6 @@ export default {
 
         // get the data
         console.log("loading data")
-
         if (this.student_behaviors.length == 0) {
             d3.csv(dataCSV).then( function(data) {
                 // X axis: scale and draw:
@@ -337,6 +337,77 @@ export default {
                     .on("mouseover", showTooltip )
                     .on("mousemove", moveTooltip )
                     .on("mouseleave", hideTooltip )
+
+                    // Annotations
+                    const type = annotation.annotationCalloutElbow
+
+                    const annotations1 = [
+                        {                      
+                            note: 
+                            {
+                                title: "Average Grade",
+                                label: "The average exam grade was 76%",
+                                wrap: 125
+                            }, 
+                            x: 300,
+                            y: 225,
+                            dy: 75,
+                            dx: 75,
+                            type: annotation.annotationCalloutElbow,
+                            connector: { end: "dot" },
+                        }
+                    ]
+                    const annotations2 = [
+                        {                      
+                            note: 
+                            {
+                                title: "Average Grade",
+                                label: "The average grade earned on Exam 2 was 79%",
+                                wrap: 125
+                            }, 
+                            x: 300,
+                            y: 225,
+                            dy: 75,
+                            dx: 75,
+                            type: annotation.annotationCalloutElbow,
+                            connector: { end: "dot" },
+                        }
+                    ]
+                    const annotations3 = [
+                        {                      
+                            note: 
+                            {
+                                title: "Average Grade",
+                                label: "The average grade earned on Exam 3 was 72%",
+                                wrap: 125
+                            }, 
+                            x: 300,
+                            y: 225,
+                            dy: 75,
+                            dx: 75,
+                            type: annotation.annotationCalloutElbow,
+                            connector: { end: "dot" },
+                        }
+                    ]
+
+                    const makeAnnotations = annotation.annotation()
+                        .notePadding(10)
+                        .type(type)
+                        .annotations(annotations1)
+
+
+                    // Alter annotation color to white
+                    annotations1.map(function(d) {
+                        d.color = "#002855";
+                        return d;
+                    })
+                    
+                    
+
+                    d3.select("svg")
+                        .append("g")
+                        .attr("class", "annotation-group")
+                        .call(makeAnnotations)
             });
         } else {
             if (this.student_behaviors == "Autograders Used") {
