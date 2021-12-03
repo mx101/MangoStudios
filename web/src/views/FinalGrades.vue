@@ -322,7 +322,7 @@ export default {
 							return `translate(${x(d.x0)}, ${y(d.length)})`;
 						})
 						.attr("width", function (d) {
-							return x(d.x1) - x(d.x0) - 2;
+							return x(d.x1) - x(d.x0) - 5;
 						})
 						.attr("height", function (d) {
 							return height - y(d.length);
@@ -345,14 +345,14 @@ export default {
 							note: {
 								title: "Average Grade",
 								label: "The average final grade was 82%",
-								wrap: 125,
+								wrap: 200,
 							},
-							x: 780,
-							y: 125,
-							dy: 50,
-							dx: 90,
+							x: 800,
+							y: 305,
+							dy: -150,
+							dx: -90,
 							type: annotation.annotationCalloutElbow,
-							connector: { end: "arrow", type: "curve" },
+							connector: { end: "arrow" },
 						},
 					];
 					const annotations2 = [
@@ -455,7 +455,7 @@ export default {
 							.attr("font-size", "calc(0.5em + 1vw)")
 							.attr("font-family", "Montserrat")
 							.attr("transform", "rotate(-90)")
-							.text("MP Grade (%)");
+							.text("Final Grade (%)");
 
 						// Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
 						// Its opacity is set to 0: we don't see it by default.
@@ -481,7 +481,7 @@ export default {
 							tooltip
 								.html(
 									`
-                                MP Grade: <strong>${d.score}%</strong>
+                                Final Grade: <strong>${d.score}%</strong>
                                 <br>
                                 POTDs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${d.autogrades}</strong>
                             `
@@ -611,7 +611,7 @@ export default {
 							.attr("font-size", "calc(0.5em + 1vw)")
 							.attr("font-family", "Montserrat")
 							.attr("transform", "rotate(-90)")
-							.text("MP Grade (%)");
+							.text("Final Grade (%)");
 
 						// Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
 						// Its opacity is set to 0: we don't see it by default.
@@ -637,9 +637,9 @@ export default {
 							tooltip
 								.html(
 									`
-                                MP Grade: <strong>${d.score}%</strong>
+                                Final Grade: <strong>${d.score}%</strong>
                                 <br>
-                                POTDs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${d.potds}</strong>
+                                POTDs: <strong>${d.potds}</strong>
                             `
 								)
 								.style("font-family", "Montserrat")
@@ -690,15 +690,15 @@ export default {
 						const annotations = [
 							{
 								note: {
-									title: "Slight Positive Correlation",
+									title: "Positive Correlation",
 									label:
 										"Students who do more POTDs tend to do better on Exams.",
-									wrap: 125,
+									wrap: 200,
 								},
-								x: 300,
+								x: 600,
 								y: 225,
-								dy: 75,
-								dx: 75,
+								dy: 200,
+								dx: 200,
 								type: annotation.annotationCalloutElbow,
 								connector: { end: "dot" },
 							},
@@ -787,6 +787,11 @@ export default {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
+}
+
+.annotation {
+	font-family: Arial;
+	color: red;
 }
 
 .navbar-nav > li {
