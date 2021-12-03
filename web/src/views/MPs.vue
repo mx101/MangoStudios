@@ -402,7 +402,7 @@ export default {
 						{
 							note: {
 								title: "Average Grade",
-								label: "The average mp grade was 73%",
+								label: "The average MP grade was 73%",
 								wrap: 200,
 							},
 							x: 750,
