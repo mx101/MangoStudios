@@ -10,7 +10,7 @@
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
-        <h3 style="text-align:left">Binary Search alogorithm is an efficent way to locate a node in a binary tree. 
+        <h3 style="text-align:left">Binary Search algorithms is an efficent way to locate a node in a binary tree. 
             <br>Utlizing the fact that the binary tree is sorted, the tree compares the value searching for with the value on the node currently on to decide which side of the tree to continue searching.
             <br>
             <br>As such, the area of search is cut in half with every comparison.

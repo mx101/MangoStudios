@@ -101,13 +101,13 @@ for i in range(1,7):
 
 # Final Grade
 tuples = dataStore.getXYTuples("potds", "final_grade")
-with open("csv/final_grade/final_grade" + str(i) + ".csv", "w") as csvfile:
+with open("csv/final_grade/final_grade.csv", "w") as csvfile:
     writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(['score'])
     for pair in tuples:
         writer.writerow([pair[1]])
 
-write_scatter_csv("final_grade", -1, "potds", None, 0)
+write_scatter_csv("final_grade", -1, "potds","score", None, 0)
 for major in majors:
     write_histogram_csv("final_grade", -1, major, 0)
     write_scatter_csv("final_grade", -1, "potds", "score", major, 0)

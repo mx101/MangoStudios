@@ -8,7 +8,7 @@
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
         <h3 style="text-align:left">
-            <br>Mps contain a lot of alogrithms and complex ideas.
+            <br>Mps contain a lot of algorithms and complex ideas.
             <br>Within this page contains major conceptual ideas that are present in mps in this class
             <br>
             <br>To help with these tough conceptual ideas, explore visualizations to help visualize what is occuring with these algorithms
