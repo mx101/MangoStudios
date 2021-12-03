@@ -1,25 +1,58 @@
 <template>
   <div id="playground">
-  <h1 style="padding-left:30px" id="concept">
-    mp_traversal
-  </h1>
-  <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
+  <h1 style="padding-left:30px;">
     MP Resources
-  </h2>
-  <div style="text-align:center; padding-top:100px">
+  </h1>
+  <div style="text-align:center; padding-top:100px;">
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
-        <h3 style="text-align:left">Binary Search alogorithm is an efficent way to locate a node in a binary tree. 
-            <br>This is stuff relating to mp mp_traversals
-            <br>This mp's goal are these and you need to know these techniques.
+        <h3 style="text-align:left">
+            <br>Mps contain a lot of alogrithms and complex ideas.
+            <br>Within this page contains major conceptual ideas that are present in mps in this class
+            <br>
+            <br>To help with these tough conceptual ideas, explore visualizations to help visualize what is occuring with these algorithms
             </h3>
       </div>
     </div>
-  <h2 style="padding-bottom:50px;font-size:50px">
-    Explore
-  </h2>
-    <div id="jumbotron-container" class="row">
+    <a href="#/Playground/mp_lists" class="col me-4">
+      <h2 style="padding-bottom:10px; padding-top:10px; font-size:50px" class="hover">
+        mp_lists
+      </h2>
+    </a>
+    <div id="jumbotron-container" class="row" style="padding-top:30px;">
+      <a href="#/Playground/PreorderPlayground" class="col me-4">
+      <div id="jumbotronHover">
+        <h2 style="text-align:center">Preorder Traversal</h2>
+      </div>
+      </a>
+
+      <a href="#/Playground/InorderPlayground" class="col">
+      <div id="jumbotronHover">
+        <h2 style="text-align:center">Inorder Traversal</h2>
+      </div>
+      </a>
+    </div>
+    <div id="jumbotron-container" class="row" style="padding-bottom:60px;">
+
+      <a href="#/Playground/BSTPlayground" class="col me-4">
+      <div id="jumbotronHover">
+        <h2 style="text-align:center">Binary Search Tree</h2>
+      </div>
+      </a>
+      <a href="#/Playground/PostorderPlayground" class="col">
+      <div id="jumbotronHover">
+        <h2 style="text-align:center">Postorder Traversal</h2>
+      </div>
+      </a>
+    </div>
+
+    <a href="#/Playground/mp_traversal" class="col me-4">
+      <h2 style="padding-bottom:10px; padding-top:10px; font-size:50px" class="hover">
+        mp_traversal
+      </h2>
+    </a>
+    <div id="jumbotron-container" class="row" style="padding-top:30px; padding-bottom:100px;">
       <a href="#/Playground/BFSTreePlayground" class="col me-4">
       <div id="jumbotronHover">
         <h2 style="text-align:center">BFS Tree Visualization</h2>
@@ -35,44 +68,6 @@
   </div>
   </div>
 </template>
-
-<script>
-import * as d3 from 'd3'
-
-export default {
-  name: 'Playground',
-
-  mounted() {
-    window.scrollTo(0, 0)
-  },
-  methods: {
-    testing() {
-      d3.select("#concept")
-        .style("opacity", 1)
-        .transition()
-        .duration(500)
-        .style("opacity", 0)
-        .style('font-size', '0px')
-        .transition()
-        .duration(100)
-        .on("end", function() {window.location.href = "#/Playground/ResourcesAll"});
-
-      d3.select("#parentconcept")
-        .attr('text-anchor', 'middle')
-        .style('font-size', 'calc(2em + 1vw)')
-        .style('font-weight', '600')
-        .style('background', 'white')
-        .transition()
-        .duration(200)
-        .style('font-size', 'calc(4em + 1vw)')
-        .style('font-weight', '700')
-        .style('letter-spacing', '0px')
-        .style('padding-left', '30px')
-        
-    }
-  }
-}
-</script>
 
 <style scoped>
     #playground {
@@ -154,7 +149,6 @@ export default {
     #playground h2.hover:hover {
         color:lightseagreen;
         background:lightgray;
-        cursor: pointer;
     }
 
     #playground h3 {

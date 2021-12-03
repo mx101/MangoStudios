@@ -1,10 +1,10 @@
 <template>
   <div id="playground">
   <h1 style="padding-left:30px" id="concept">
-    Breath First Search Binary Tree
+    Binary Tree
   </h1>
   <h2 class="hover" style="padding-left:30px;font-size:40px" v-on:click="testing" id="parentconcept">
-    mp_traversal
+    mp_lists
   </h2>
 
   <div style="text-align:center; padding-top:100px">
@@ -12,12 +12,12 @@
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
-        <h3 style="text-align:left">
-            Breath First Search (BFS) is a way to search trees and graphs for a value.
-            <br>It is essecially useful when the tree/graph is not sorted
+        <h3 style="text-align:left">Binary Search alogorithm is an efficent way to locate a node in a binary tree. 
+            <br>Utlizing the fact that the binary tree is sorted, the tree compares the value searching for with the value on the node currently on to decide which side of the tree to continue searching.
             <br>
-            <br>A key attribute of BFS is that it will always search the nodes with the closest path to the starting location first.
-            <br>This will always find the closest paths first!
+            <br>As such, the area of search is cut in half with every comparison.
+            <br>
+            <br>For MPs where Binary Search Tree understanding is important, understanding the order of comparison and which nodes would be traversed is most important
             </h3>
       </div>
     </div>
@@ -32,7 +32,7 @@ componentDidMount() {
 }
 
 <script>
-import BST from "../components/BFSTree.vue"
+import BST from "../components/BST.vue"
 import * as d3 from 'd3'
 
 export default {
@@ -55,7 +55,7 @@ export default {
         .style('font-size', '0px')
         .transition()
         .duration(100)
-        .on("end", function() {window.location.href = "#/Playground/mp_traversal"});
+        .on("end", function() {window.location.href = "#/Playground/mp_lists"});
 
       d3.select("#parentconcept")
         .attr('text-anchor', 'middle')

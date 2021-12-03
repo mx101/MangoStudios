@@ -15,7 +15,7 @@
         <h3 style="text-align:left">
             Inorder Traversal is one of the many ways to traverse through an entire binary tree.
             <br>The key difference is that the nodes to the left are visted before the root node and then the right child is visted. 
-            <br>Inorder traversal will visit nodes in order if the binary tree is sorted!
+            <br>Inorder traversal will visit nodes in order if the binary xstree is sorted!
             <br>
             <br>The traversal again is <b>Left, Root, Right </b>
             </h3>
@@ -73,7 +73,7 @@ export default {
 <!-- styling for the component -->
 <style scoped>
     #playground {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* text-align: center; */
@@ -114,6 +114,7 @@ export default {
     #playground h2.hover:hover {
         color:lightseagreen;
         background:lightgray;
+        cursor: pointer;
     }
 
     #playground h3 {
