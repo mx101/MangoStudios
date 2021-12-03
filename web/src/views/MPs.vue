@@ -394,6 +394,72 @@ export default {
 						.on("mouseover", showTooltip)
 						.on("mousemove", moveTooltip)
 						.on("mouseleave", hideTooltip);
+
+					// Annotations
+					const type = annotation.annotationCalloutElbow;
+
+					const annotations1 = [
+						{
+							note: {
+								title: "Average Grade",
+								label: "The average mp grade was 73%",
+								wrap: 200,
+							},
+							x: 750,
+							y: 305,
+							dy: -150,
+							dx: -90,
+							type: annotation.annotationCalloutElbow,
+							connector: { end: "arrow" },
+						},
+					];
+					const annotations2 = [
+						{
+							note: {
+								title: "Average Grade",
+								label: "The average grade earned on Exam 2 was 79%",
+								wrap: 125,
+							},
+							x: 300,
+							y: 225,
+							dy: 75,
+							dx: 75,
+							type: annotation.annotationCalloutElbow,
+							connector: { end: "dot" },
+						},
+					];
+					const annotations3 = [
+						{
+							note: {
+								title: "Average Grade",
+								label: "The average grade earned on Exam 3 was 72%",
+								wrap: 125,
+							},
+							x: 300,
+							y: 225,
+							dy: 75,
+							dx: 75,
+							type: annotation.annotationCalloutElbow,
+							connector: { end: "dot" },
+						},
+					];
+
+					const makeAnnotations = annotation
+						.annotation()
+						.notePadding(10)
+						.type(type)
+						.annotations(annotations1);
+
+					// Alter annotation color to white
+					annotations1.map(function (d) {
+						d.color = "#002855";
+						return d;
+					});
+
+					d3.select("svg")
+						.append("g")
+						.attr("class", "annotation-group")
+						.call(makeAnnotations);
 				});
 			} else {
 				if (this.student_behaviors == "Autograders Used") {
@@ -529,12 +595,12 @@ export default {
 									title: "Positive Correlation",
 									label:
 										"Students who use more autogrades tend to earn higher MP grades",
-									wrap: 125,
+									wrap: 200,
 								},
-								x: 300,
-								y: 275,
-								dy: 75,
-								dx: 75,
+								x: 575,
+								y: 350,
+								dy: -170,
+								dx: -170,
 								type: annotation.annotationCalloutElbow,
 								connector: { end: "dot" },
 							},
@@ -688,12 +754,12 @@ export default {
 								note: {
 									title: "No Correlation",
 									label: "There is no correlation between POTDs and MP grades.",
-									wrap: 125,
+									wrap: 200,
 								},
-								x: 300,
-								y: 225,
-								dy: 75,
-								dx: 75,
+								x: 450,
+								y: 310,
+								dy: -100,
+								dx: -100,
 								type: annotation.annotationCalloutElbow,
 								connector: { end: "dot" },
 							},
