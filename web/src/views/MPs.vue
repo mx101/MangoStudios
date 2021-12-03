@@ -1,77 +1,77 @@
 <template>
     <div id="mps">
     <h1 style="padding-left:30px">
-        Machine Problems
+        <br>
+        MPs
     </h1>
 
     <div class="row" style="width:75%">
         <div class="col">
-            <img src="../assets/filter_icon.jpg" width="100px" height="10em">
+            Cute filter image
         </div>
 
         <div class="col">
-            Filters({{this.numFilters}})
+            All filters({{this.numFilters}})
         </div>
 
         <div class="col">
-                 <select class="form-select" style="width:auto;" v-model="mp" @change="updateData()">
-                    <option disabled value="">MP</option>
-                    <option>mp_intro</option>
-                    <option>mp_stickers</option>
-                    <option>mp_lists</option>
-                    <option>mp_traversals</option>
-                    <option>mp_mosaics</option>
-                    <option>mp_mazes</option>
-                </select>
+            <select class="form-select" style="width:auto;" v-model="mp" @change="updateData()">
+                <option disabled value="">MP</option>
+                <option>mp_intro</option>
+                <option>mp_stickers</option>
+                <option>mp_lists</option>
+                <option>mp_traversals</option>
+                <option>mp_mosaics</option>
+                <option>mp_mazes</option>
+            </select>
         </div>
         
         <div class="col">
-                 <select class="form-select" style="width:auto;" v-model="student_behaviors" @change="buildFileName('')">
-                    <option disabled value="">Student Behaviors</option>
-                    <option>Labs completed</option>
-                    <option>POTDS completed</option>
-                    <option>Exam Scores</option>
-                    <option>Final Grade</option>
-                </select>
-                <a v-on:click="clearField('student_behaviors')" 
-                    v-if="this.student_behaviors.length != 0" 
-                    type="button" 
-                    class="btn btn-primary btn-sm" 
-                    aria-label="Close">Clear
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Student Behaviors
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" >Labs</a></li>
+                    <li><a class="dropdown-item" >POTDS</a></li>
+                    <li><a class="dropdown-item" >Exams</a></li>
+                    <li><a class="dropdown-item" >Final Grade</a></li>
+                </ul>
+            </li>
+            </ul>
         </div>
         
         <div class="col">
-                <select class="form-select" style="width:auto;" v-model="major" @change="buildFileName('')">
-                    <option disabled value="">Major</option>
-                    <option>CS</option>
-                    <option>ECE</option>
-                    <option>English</option>
-                    <option>Math</option>
-                    <option>Physics</option>
-                </select>
-                <a v-on:click="clearField('major')" 
-                    v-if="this.major.length != 0" 
-                    type="button" 
-                    class="btn btn-primary btn-sm" 
-                    aria-label="Close">Clear
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Major
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" >CS</a></li>
+                    <li><a class="dropdown-item" >CS + X</a></li>
+                    <li><a class="dropdown-item" >Physics</a></li>
+                    <li><a class="dropdown-item" >Electrical Engineering</a></li>
+                </ul>
+            </li>
+            </ul>
         </div>
         
         <div class="col">
-                <select class="form-select" style="width:auto;" v-model="year" @change="buildFileName('')">
-                    <option disabled value="">Year</option>
-                    <option>Freshman</option>
-                    <option>Sophomore</option>
-                    <option>Junior</option>
-                    <option>Senior</option>
-                </select>
-                <a v-on:click="clearField('year')" 
-                    v-if="this.year.length != 0" 
-                    type="button" 
-                    class="btn btn-primary btn-sm" 
-                    aria-label="Close">Clear
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Year
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" >Freshman</a></li>
+                    <li><a class="dropdown-item" >Sophomore</a></li>
+                    <li><a class="dropdown-item" >Junior</a></li>
+                    <li><a class="dropdown-item" >Senior</a></li>
+                </ul>
+            </li>
+            </ul>
         </div>
     </div>
 
@@ -86,13 +86,13 @@
             <div class="row">
                 Completed POTDs
                 <br>
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="completed_potds" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="135" autocomplete="off" v-model="completed_potds" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
                 Autograder runs used
                 <br>
-                <input name="input" class="form-control" type="number" step="1" min="0" max="99" autocomplete="off" v-model="autograders_used" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
+                <input name="input" class="form-control" type="number" step="1" min="0" max="10" autocomplete="off" v-model="autograders_used" @change="changeExpectedGrade()" style="width: auto; font-size: 1em; text-align: center;"> 
             </div>
 
             <div class="row">
@@ -457,24 +457,3 @@ export default {
   }
 }
 </script>
-
-
-<style scoped>
-
-#mps {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* text-align: center; */
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-
-#mps h1 {
-    font-size: calc(4em + 1vw);
-    font-weight: 700;
-    margin: 0;
-}
-
-</style>
