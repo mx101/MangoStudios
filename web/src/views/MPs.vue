@@ -293,10 +293,10 @@ export default {
 						.call(d3.axisBottom(x))
 						.append("text")
 						.attr("x", width / 2)
-						.attr("y", +40)
+						.attr("y", +50)
 						.attr("fill", "#002855")
 						.attr("font-weight", "bold")
-						.attr("font-size", "15px")
+						.attr("font-size", "calc(0.5em + 1vw)")
 						.attr("font-family", "Montserrat")
 						.text("Grade Percentage (%)");
 
@@ -326,11 +326,11 @@ export default {
 						.append("g")
 						.call(d3.axisLeft(y))
 						.append("text")
-						.attr("x", -height / 2 + 80)
+						.attr("x", -height / 2 + 150)
 						.attr("y", -40)
 						.attr("fill", "#002855")
 						.attr("font-weight", "bold")
-						.attr("font-size", "15px")
+						.attr("font-size", "calc(0.5em + 1vw)")
 						.attr("font-family", "Montserrat")
 						.attr("transform", "rotate(-90)")
 						.text("Number of Students");
@@ -421,7 +421,7 @@ export default {
 							.attr("fill", "#002855")
 							.attr("font-weight", "bold")
 							.attr("font-family", "Montserrat")
-							.attr("font-size", "15px")
+							.attr("font-size", "calc(0.5em + 1vw)")
 							.text("Autograders Used");
 
 						// Add Y axis
@@ -444,7 +444,7 @@ export default {
 							.attr("y", -40)
 							.attr("fill", "#002855")
 							.attr("font-weight", "bold")
-							.attr("font-size", "15px")
+							.attr("font-size", "calc(0.5em + 1vw)")
 							.attr("font-family", "Montserrat")
 							.attr("transform", "rotate(-90)")
 							.text("MP Grade (%)");
@@ -581,7 +581,7 @@ export default {
 							.attr("fill", "#002855")
 							.attr("font-weight", "bold")
 							.attr("font-family", "Montserrat")
-							.attr("font-size", "15px")
+							.attr("font-size", "calc(0.5em + 1vw)")
 							.text("Number of POTDs Completed");
 
 						// Add Y axis
@@ -604,7 +604,7 @@ export default {
 							.attr("y", -40)
 							.attr("fill", "#002855")
 							.attr("font-weight", "bold")
-							.attr("font-size", "15px")
+							.attr("font-size", "calc(0.5em + 1vw)")
 							.attr("font-family", "Montserrat")
 							.attr("transform", "rotate(-90)")
 							.text("MP Grade (%)");
