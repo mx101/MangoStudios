@@ -7,11 +7,7 @@
 
     <div class="row" style="width:75%">
         <div class="col">
-            Cute filter image
-        </div>
-
-        <div class="col">
-            All filters({{this.numFilters}})
+           <img style="padding-left:30px" src="/img/filter.png" alt="filter" width="80" height="50">
         </div>
 
         <div class="col">
@@ -27,6 +23,20 @@
         </div>
 
         <div class="col">
+            <select class="form-select" style="width:auto;" v-model="student_behaviors" @change="updateData()">
+                <option disabled value="">Student Behaviors</option>
+                <option>POTDs Completed</option>
+                <option>Autograders Used</option>
+            </select>
+            <a v-on:click="clearField('student_behaviors')" 
+                v-if="this.student_behaviors.length != 0" 
+                type="button" 
+                class="btn btn-primary btn-sm" 
+                aria-label="Close">Clear
+            </a>
+        </div>
+
+        <div class="col">
             <select class="form-select" style="width:auto;" v-model="major" @change="updateData()">
                 <option disabled value="">Major</option>
                 <option>Advertising</option>
@@ -38,20 +48,6 @@
             </select>
             <a v-on:click="clearField('major')" 
                 v-if="this.major.length != 0" 
-                type="button" 
-                class="btn btn-primary btn-sm" 
-                aria-label="Close">Clear
-            </a>
-        </div>
-        
-        <div class="col">
-            <select class="form-select" style="width:auto;" v-model="student_behaviors" @change="updateData()">
-                <option disabled value="">Student Behaviors</option>
-                <option>POTDs Completed</option>
-                <option>Autograders Used</option>
-            </select>
-            <a v-on:click="clearField('student_behaviors')" 
-                v-if="this.student_behaviors.length != 0" 
                 type="button" 
                 class="btn btn-primary btn-sm" 
                 aria-label="Close">Clear
@@ -374,7 +370,7 @@ export default {
                                     .attr("font-weight", "bold")
                                     .attr("font-family", "Montserrat")
                                     .attr("font-size", "15px")
-                                    .text("Number of POTDs Completed");
+                                    .text("Autograders Used");
 
                     // Add Y axis
                     const y = d3.scaleLinear()
@@ -464,8 +460,8 @@ export default {
                         {                      
                             note: 
                             {
-                                title: "No Correlation",
-                                label: "There is no correlation between POTDs and MP grades.",
+                                title: "Positive Correlation",
+                                label: "Students who use more autogrades tend to earn higher MP grades",
                                 wrap: 125
                             }, 
                             x: 300,
