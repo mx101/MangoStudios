@@ -10,7 +10,7 @@
     <div id="jumbotron-container" class="row">
       <div id="jumbotron" class="col">
         <h2>Summary</h2>
-        <h3 style="text-align:left">Binary Search alogorithm is an efficent way to locate a node in a binary tree. 
+        <h3 style="text-align:left">Binary Search algorithms is an efficent way to locate a node in a binary tree. 
             <br>This is stuff relating to mp mp_traversals
             <br>This mp's goal are these and you need to know these techniques.
             </h3>
