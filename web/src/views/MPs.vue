@@ -119,6 +119,7 @@
 
 
 <script>
+/* eslint-disable */
 import * as d3 from 'd3'
 import annotation from "../assets/js/d3-annotation.min.js"
 
@@ -365,144 +366,282 @@ export default {
                     .on("mouseleave", hideTooltip )
             });
         } else {
-            d3.csv(dataCSV).then( function(data) {
-                // Add X axis
-                const x = d3.scaleLinear()
-                    .domain([d3.min(data, function(d) { return +d.potds }) - 2.5, d3.max(data, function(d) { return +d.potds })])
-                    .range([ 0, width ]);
-                    svg.append("g")
-                        .attr("transform", `translate(0, ${height})`)
-                        .call(d3.axisBottom(x))
+            if (this.student_behaviors == "Autograders Used") {
+                console.log("ag")
+                d3.csv(dataCSV).then( function(data) {
+                    // Add X axis
+                    const x = d3.scaleLinear()
+                        .domain([d3.min(data, function(d) { return +d.autogrades }) - 2.5, d3.max(data, function(d) { return +d.autogrades })])
+                        .range([ 0, width ]);
+                        svg.append("g")
+                            .attr("transform", `translate(0, ${height})`)
+                            .call(d3.axisBottom(x))
+                                .append("text")
+                                    .attr("x", width/2)
+                                    .attr("y", +40)
+                                    .attr("fill", "#002855")
+                                    .attr("font-weight", "bold")
+                                    .attr("font-family", "Montserrat")
+                                    .attr("font-size", "15px")
+                                    .text("Number of POTDs Completed");
+
+                    // Add Y axis
+                    const y = d3.scaleLinear()
+                        .domain([d3.min(data, function(d) { return +d.score }) - 2.5, d3.max(data, function(d) { return +d.score })])
+                        .range([ height, 0]);
+                        svg.append("g")
+                        .call(d3.axisLeft(y))
                             .append("text")
-                                .attr("x", width/2)
-                                .attr("y", +40)
-                                .attr("fill", "#002855")
-                                .attr("font-weight", "bold")
-                                .attr("font-family", "Montserrat")
-                                .attr("font-size", "15px")
-                                .text("Number of POTDs Completed");
+                                    .attr("x", -height/2 + 80)
+                                    .attr("y", -40)
+                                    .attr("fill", "#002855")
+                                    .attr("font-weight", "bold")
+                                    .attr("font-size", "15px")
+                                    .attr("font-family", "Montserrat")
+                                    .attr("transform", "rotate(-90)")
+                                    .text("MP Grade (%)");
 
-                // Add Y axis
-                const y = d3.scaleLinear()
-                    .domain([d3.min(data, function(d) { return +d.score }) - 2.5, d3.max(data, function(d) { return +d.score })])
-                    .range([ height, 0]);
-                    svg.append("g")
-                    .call(d3.axisLeft(y))
-                        .append("text")
-                                .attr("x", -height/2 + 80)
-                                .attr("y", -40)
-                                .attr("fill", "#002855")
-                                .attr("font-weight", "bold")
-                                .attr("font-size", "15px")
-                                .attr("font-family", "Montserrat")
-                                .attr("transform", "rotate(-90)")
-                                .text("MP Grade (%)");
+                    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
+                    // Its opacity is set to 0: we don't see it by default.
+                    const tooltip = d3.select("#my_dataviz")
+                        .append("div")
+                        .style("opacity", 0)
+                        .attr("class", "tooltip")
+                        .style("background-color", "#002855")
+                        .style("color", "white")
+                        .style("border-radius", "5px")
+                        .style("padding", "10px")
 
-                // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
-                // Its opacity is set to 0: we don't see it by default.
-                const tooltip = d3.select("#my_dataviz")
-                    .append("div")
-                    .style("opacity", 0)
-                    .attr("class", "tooltip")
-                    .style("background-color", "#002855")
-                    .style("color", "white")
-                    .style("border-radius", "5px")
-                    .style("padding", "10px")
-
-                // A function that change this tooltip when the user hover a point.
-                // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-                const mouseover = function(event, d) {
-                    console.log(event)
-                    console.log(d)
-                    tooltip
-                    .style("opacity", 1)
-                }
-
-                const mousemove = function(event, d) {
-                    tooltip
-                    .html(`
-                            MP Grade: <strong>${d.score}%</strong>
-                            <br>
-                            POTDs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${d.potds}</strong>
-                        `)
-                    .style("font-family", "Montserrat")
-                    .style("left", (event.x) + 12.5 + "px")
-                    .style("top", (event.y) + -12.5 + "px")
-                }
-
-                // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-                const mouseleave = function(event,d) {
-                    console.log(event)
-                    console.log(d)
-                    tooltip
-                    .transition()
-                    .duration(300)
-                    .style("opacity", 0)
-                }
-
-                const hoverEffect = function(event, d) {
-                    svg.select(d)
-                    .style("fill", "#002855")
-                }
-
-                // Add dots
-                svg.append('g')
-                    .selectAll("dot")
-                    .data(data.filter(function(d,i){return i<100})) // the .filter part is just to keep a few dots on the chart, not all of them
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function (d) { return x(d.potds); } )
-                    .attr("cy", function (d) { return y(d.score); } )
-                    .attr("r", 8)
-                    .style("fill", "#0068DE")
-                    .style("opacity", 0.35)
-                    .style("stroke", "white")
-                    .on("mouseover", hoverEffect)
-                    .on("mouseover", mouseover )
-                    .on("mousemove", mousemove )
-                    .on("mouseleave", mouseleave )
-
-                
-
-
-                // Annotations
-                const type = annotation.annotationCalloutElbow
-
-                const annotations = [
-                    {                      
-                        note: 
-                        {
-                            title: "No Correlation",
-                            label: "There is no correlation between POTDs and MP grades.",
-                            wrap: 125
-                        }, 
-                        x: 300,
-                        y: 225,
-                        dy: 75,
-                        dx: 75,
-                        type: annotation.annotationCalloutElbow,
-                        connector: { end: "dot" },
+                    // A function that change this tooltip when the user hover a point.
+                    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+                    const mouseover = function(event, d) {
+                        console.log(event)
+                        console.log(d)
+                        tooltip
+                        .style("opacity", 1)
                     }
-                ]
 
-                const makeAnnotations = annotation.annotation()
-                    .notePadding(10)
-                    .type(type)
-                    .annotations(annotations)
+                    const mousemove = function(event, d) {
+                        tooltip
+                        .html(`
+                                MP Grade: <strong>${d.score}%</strong>
+                                <br>
+                                POTDs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${d.autogrades}</strong>
+                            `)
+                        .style("font-family", "Montserrat")
+                        .style("left", (event.x) + 12.5 + "px")
+                        .style("top", (event.y) + -12.5 + "px")
+                    }
+
+                    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+                    const mouseleave = function(event,d) {
+                        console.log(event)
+                        console.log(d)
+                        tooltip
+                        .transition()
+                        .duration(300)
+                        .style("opacity", 0)
+                    }
+
+                    const hoverEffect = function(event, d) {
+                        svg.select(d)
+                        .style("fill", "#002855")
+                    }
+
+                    // Add dots
+                    svg.append('g')
+                        .selectAll("dot")
+                        .data(data.filter(function(d,i){return i<200})) // the .filter part is just to keep a few dots on the chart, not all of them
+                        .enter()
+                        .append("circle")
+                        .attr("cx", function (d) { return x(d.autogrades); } )
+                        .attr("cy", function (d) { return y(d.score); } )
+                        .attr("r", 8)
+                        .style("fill", "#0068DE")
+                        .style("opacity", 0.35)
+                        .style("stroke", "white")
+                        .on("mouseover", hoverEffect)
+                        .on("mouseover", mouseover )
+                        .on("mousemove", mousemove )
+                        .on("mouseleave", mouseleave )
+
+                    
+                    // Annotations
+                    const type = annotation.annotationCalloutElbow
+
+                    const annotations = [
+                        {                      
+                            note: 
+                            {
+                                title: "No Correlation",
+                                label: "There is no correlation between POTDs and MP grades.",
+                                wrap: 125
+                            }, 
+                            x: 300,
+                            y: 275,
+                            dy: 75,
+                            dx: 75,
+                            type: annotation.annotationCalloutElbow,
+                            connector: { end: "dot" },
+                        }
+                    ]
+
+                    const makeAnnotations = annotation.annotation()
+                        .notePadding(10)
+                        .type(type)
+                        .annotations(annotations)
 
 
-                // Alter annotation color to white
-                annotations.map(function(d) {
-                    d.color = "#002855";
-                    return d;
-                })
+                    // Alter annotation color to white
+                    annotations.map(function(d) {
+                        d.color = "#002855";
+                        return d;
+                    })
 
-                d3.select("svg")
-                    .append("g")
-                    .attr("class", "annotation-group")
-                    .call(makeAnnotations)
+                    d3.select("svg")
+                        .append("g")
+                        .attr("class", "annotation-group")
+                        .call(makeAnnotations)
+                }
+                )
+            } else {
+                d3.csv(dataCSV).then( function(data) {
+                    // Add X axis
+                    const x = d3.scaleLinear()
+                        .domain([d3.min(data, function(d) { return +d.potds }) - 2.5, d3.max(data, function(d) { return +d.potds })])
+                        .range([ 0, width ]);
+                        svg.append("g")
+                            .attr("transform", `translate(0, ${height})`)
+                            .call(d3.axisBottom(x))
+                                .append("text")
+                                    .attr("x", width/2)
+                                    .attr("y", +40)
+                                    .attr("fill", "#002855")
+                                    .attr("font-weight", "bold")
+                                    .attr("font-family", "Montserrat")
+                                    .attr("font-size", "15px")
+                                    .text("Number of POTDs Completed");
+
+                    // Add Y axis
+                    const y = d3.scaleLinear()
+                        .domain([d3.min(data, function(d) { return +d.score }) - 2.5, d3.max(data, function(d) { return +d.score })])
+                        .range([ height, 0]);
+                        svg.append("g")
+                        .call(d3.axisLeft(y))
+                            .append("text")
+                                    .attr("x", -height/2 + 80)
+                                    .attr("y", -40)
+                                    .attr("fill", "#002855")
+                                    .attr("font-weight", "bold")
+                                    .attr("font-size", "15px")
+                                    .attr("font-family", "Montserrat")
+                                    .attr("transform", "rotate(-90)")
+                                    .text("MP Grade (%)");
+
+                    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
+                    // Its opacity is set to 0: we don't see it by default.
+                    const tooltip = d3.select("#my_dataviz")
+                        .append("div")
+                        .style("opacity", 0)
+                        .attr("class", "tooltip")
+                        .style("background-color", "#002855")
+                        .style("color", "white")
+                        .style("border-radius", "5px")
+                        .style("padding", "10px")
+
+                    // A function that change this tooltip when the user hover a point.
+                    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+                    const mouseover = function(event, d) {
+                        console.log(event)
+                        console.log(d)
+                        tooltip
+                        .style("opacity", 1)
+                    }
+
+                    const mousemove = function(event, d) {
+                        tooltip
+                        .html(`
+                                MP Grade: <strong>${d.score}%</strong>
+                                <br>
+                                POTDs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${d.potds}</strong>
+                            `)
+                        .style("font-family", "Montserrat")
+                        .style("left", (event.x) + 12.5 + "px")
+                        .style("top", (event.y) + -12.5 + "px")
+                    }
+
+                    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+                    const mouseleave = function(event,d) {
+                        console.log(event)
+                        console.log(d)
+                        tooltip
+                        .transition()
+                        .duration(300)
+                        .style("opacity", 0)
+                    }
+
+                    const hoverEffect = function(event, d) {
+                        svg.select(d)
+                        .style("fill", "#002855")
+                    }
+
+                    // Add dots
+                    svg.append('g')
+                        .selectAll("dot")
+                        .data(data.filter(function(d,i){return i<100})) // the .filter part is just to keep a few dots on the chart, not all of them
+                        .enter()
+                        .append("circle")
+                        .attr("cx", function (d) { return x(d.potds); } )
+                        .attr("cy", function (d) { return y(d.score); } )
+                        .attr("r", 8)
+                        .style("fill", "#0068DE")
+                        .style("opacity", 0.35)
+                        .style("stroke", "white")
+                        .on("mouseover", hoverEffect)
+                        .on("mouseover", mouseover )
+                        .on("mousemove", mousemove )
+                        .on("mouseleave", mouseleave )
+
+                    
+                    // Annotations
+                    const type = annotation.annotationCalloutElbow
+
+                    const annotations = [
+                        {                      
+                            note: 
+                            {
+                                title: "No Correlation",
+                                label: "There is no correlation between POTDs and MP grades.",
+                                wrap: 125
+                            }, 
+                            x: 300,
+                            y: 225,
+                            dy: 75,
+                            dx: 75,
+                            type: annotation.annotationCalloutElbow,
+                            connector: { end: "dot" },
+                        }
+                    ]
+
+                    const makeAnnotations = annotation.annotation()
+                        .notePadding(10)
+                        .type(type)
+                        .annotations(annotations)
+
+
+                    // Alter annotation color to white
+                    annotations.map(function(d) {
+                        d.color = "#002855";
+                        return d;
+                    })
+
+                    d3.select("svg")
+                        .append("g")
+                        .attr("class", "annotation-group")
+                        .call(makeAnnotations)
+                }
+                )}
             }
-            )}
     }
   }
 }
