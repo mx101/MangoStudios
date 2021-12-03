@@ -233,7 +233,7 @@ export default {
         d3.select("svg").remove();
 
         // set the dimensions and margins of the graph
-        const margin = {top: 80, right: 80, bottom: 80, left: 80},
+        const margin = {top: 80, right: 250, bottom: 80, left: 80},
             width = 1100 - margin.left - margin.right,
             height = 800 - margin.top - margin.bottom;
 
@@ -464,8 +464,8 @@ export default {
                                 label: "Students who use more autogrades tend to earn higher MP grades",
                                 wrap: 125
                             }, 
-                            x: 300,
-                            y: 275,
+                            x: 850,
+                            y: 145,
                             dy: 75,
                             dx: 75,
                             type: annotation.annotationCalloutElbow,
@@ -601,8 +601,8 @@ export default {
                                 label: "There is no correlation between POTDs and MP grades.",
                                 wrap: 125
                             }, 
-                            x: 300,
-                            y: 225,
+                            x: 850,
+                            y: 300,
                             dy: 75,
                             dx: 75,
                             type: annotation.annotationCalloutElbow,
